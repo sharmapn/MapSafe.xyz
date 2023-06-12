@@ -25,7 +25,7 @@ const LocationNFT = require('./abis/Location.json')
 //09-Jan-2023. This is the contract address
 const contractAddress = "0x8dD5Ca941A9F839062b6589A2E3f701458B011A9" //"0xa505630672898f901A0c6B261A693C39f17e66B8"
 //const address = '0x244EAbEf05ACF009746Ce91fE1712Daf3857e620'; //'0xAD8eD8FBA46BA6bE9120d0aEc43109A0543b69d3';
-const privateKey = '0x452e08e795100c60f9dc60b52f119c5e293e8de4858fc0bd985efaa3bc857dcd'; //'d448c9224e0bcf3a6475fb54a34056fb02ef469d1f5f8520bc0f6e443bde68c4';
+const privateKey = '';
 //const provider = new Provider(privateKey, 'https://rinkeby.infura.io/v3/e90e21a0290f452386b3efa1dc8df355'); 
    
 const app = express();
