@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script>
+	//import Web3 from 'web3';
+	
+	async function getData(){
+		//var Web3 = require('web3');
+		/*
+		var web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.etherscan.io/tx/')); //https://rinkeby.infura.io/v3/
+		var trans = await web3.eth.getTransaction('0xd8b3c50230fb2f1d3d8586f5179b514e913dbe7868effd490a5743caaabda6b9');
+		console.log(trans);
+		*/
+		
+		//solution from here: https://codeforgeek.com/configure-infura-with-web3-and-node-js/
+		//const Web3 = require("web3");
+		//get this from your infura dashboard and project settings
+		//Project ID: e90e21a0290f452386b3efa1dc8df355
+		//endpoint: https://mainnet.infura.io/v3/e90e21a0290f452386b3efa1dc8df355
+		//endpoint: wss://mainnet.infura.io/ws/v3/e90e21a0290f452386b3efa1dc8df355
+		
+		//const ethNetwork = 'https://rinkeby.infura.io/v3/e90e21a0290f452386b3efa1dc8df355';
+		const ethNetwork = 'https://goerli.etherscan.io/tx/';
+		const web3 = new Web3(new Web3.providers.HttpProvider(ethNetwork));
+
+		// let's fetch a balance
+		var acc = '0x244eabef05acf009746ce91fe1712daf3857e620'; 
+		web3.eth.getBalance(acc, async (err, result) => {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			let balance = web3.utils.fromWei(result, "ether");
+			console.log(balance + " ETH");
+		});
+		
+		var TNnum = '0xc4c9be69899f8e15eb0c1623cd7a362290bd647e0467d9d7af7578a9d8979bfd';
+		var trans = await web3.eth.getTransaction(TNnum);
+		console.log(trans)
+		var input = web3.utils.toAscii(trans.input)
+		console.log('input:' + input)
+	}
+  </script>
+</head>
+
+<body>
+
+<h2>JavaScript Functions</h2>
+
+<p>This example calls a function which performs a calculation, and returns the result:</p>
+
+<p id="demo"></p>
+
+<input type="button" value="GetData" id="myCheck" onclick="getData()">
+
+</body>
+</html>
