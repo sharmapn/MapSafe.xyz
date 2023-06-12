@@ -228,7 +228,7 @@ async function loadEthers()
     const infuraUrl = 'https://rinkeby.infura.io/v3/e90e21a0290f452386b3efa1dc8df355';
     const address = '0x244EAbEf05ACF009746Ce91fE1712Daf3857e620';
 
-    const privateKey = '452e08e795100c60f9dc60b52f119c5e293e8de4858fc0bd985efaa3bc857dcd'; // Genesis private key
+    const privateKey = ''; // Genesis private key
     
 
     var ethers = require('ethers');
@@ -262,9 +262,9 @@ async function loadEthers()
     var fromAddress  = '0x244EAbEf05ACF009746Ce91fE1712Daf3857e620';
 
     //my own
-    let privateKey = "0x" + "452e08e795100c60f9dc60b52f119c5e293e8de4858fc0bd985efaa3bc857dcd"; //my own
+    let privateKey = "0x" + ""; //my own
     //original
-    //let privateKey = "0x3141592653589793238462643383279502884197169399375105820974944592";
+    //let privateKey = "";
     let wallet = new ethers.Wallet(privateKey, provider);
     
     console.log('main contract start');
@@ -575,7 +575,7 @@ async function mint(location)
   
     const Provider = require('@truffle/hdwallet-provider');
     //const address = '0x244EAbEf05ACF009746Ce91fE1712Daf3857e620'; //'0xAD8eD8FBA46BA6bE9120d0aEc43109A0543b69d3';
-    const privateKey = '0x452e08e795100c60f9dc60b52f119c5e293e8de4858fc0bd985efaa3bc857dcd'; //'d448c9224e0bcf3a6475fb54a34056fb02ef469d1f5f8520bc0f6e443bde68c4';
+    const privateKey = ''; //'';
     //const provider = new Provider(privateKey, 'https://rinkeby.infura.io/v3/e90e21a0290f452386b3efa1dc8df355'); 
     let provider = ethers.getDefaultProvider('rinkeby');
     //var mnemonic = "orange apple banana ... ";
@@ -589,9 +589,9 @@ async function mint(location)
     //maybe this is not needed
     var fromAddress  = '0x244EAbEf05ACF009746Ce91fE1712Daf3857e620';
 
-    //let privateKey = "452e08e795100c60f9dc60b52f119c5e293e8de4858fc0bd985efaa3bc857dcd"; //my own
+    //let privateKey = ""; //my own
     //other account private key
-    //let privateKey = "0x3141592653589793238462643383279502884197169399375105820974944592";
+    //let privateKey = "";
     let wallet = new ethers.Wallet(privateKey, provider);
 
     
