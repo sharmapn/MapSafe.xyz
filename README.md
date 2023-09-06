@@ -1,4 +1,4 @@
-# mapsafe.xyz
+# MapSafe.xyz
 
 This repository holds the source code for the MapSafe Geospatial Data Sovereignty tool. Mapsafe offers a complete approach to safeguarding geospatial data by obfuscating, encrypting and notarising it.
 These functions run client-side in the browser, meaning geospatial data never leaves your computer unprotected. Thereby the tool creates a completely trustless mechanism for sharing sensitive data.
