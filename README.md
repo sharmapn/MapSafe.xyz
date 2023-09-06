@@ -9,5 +9,5 @@ These functions run client-side in the browser, meaning geospatial data never le
 
 The paper on the tool, "MapSafe: A complete tool for achieving geospatial data sovereignty," was published in the Transactions in GIS Journal.  
 
-https://onlinelibrary.wiley.com/doi/10.1111/tgis.13094 
+https://onlinelibrary.wiley.com/doi/10.1111/tgis.13094 <br>
 https://onlinelibrary.wiley.com/doi/epdf/10.1111/tgis.13094
