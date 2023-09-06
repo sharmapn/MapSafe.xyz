@@ -1,7 +1,7 @@
 # MapSafe.xyz
 
-This repository will soon hold the source code for the MapSafe Geospatial Data Sovereignty tool. We are in te process of preparing the code. 
-Please feel free to raise any issue with the tool via the Issues Tab.
+This repository will soon hold the source code for the MapSafe Geospatial Data Sovereignty tool. We are in the process of preparing the code. 
+In the meantime, feel free to raise any issue with the tool via the Issues Tab.
 
 
 Mapsafe offers a complete approach to safeguarding geospatial data by obfuscating, encrypting and notarising it.
