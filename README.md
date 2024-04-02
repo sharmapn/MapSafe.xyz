@@ -12,7 +12,17 @@ The paper on the tool, "MapSafe: A complete tool for achieving geospatial data s
 https://onlinelibrary.wiley.com/doi/10.1111/tgis.13094 <br>
 https://onlinelibrary.wiley.com/doi/epdf/10.1111/tgis.13094
 
-https://mapsafe.xyz/images/safeguard.mp4
+Full guide to safeguarding: https://mapsafe.xyz/safeguarding-guide.html
+
+Watch this video to learn how to safeguard your data, from start to finish!
+https://github.com/sharmapn/MapSafe.xyz/assets/17430034/8c8761ad-fb3c-4422-ac40-5bd3de29e4a5
+
+Full guide to verification: https://mapsafe.xyz/verification-guide.html
+
+Watch this GIF to learn how to verify your data, from start to finish!
+https://github.com/sharmapn/MapSafe.xyz/assets/17430034/2db367cf-420f-4278-a144-578db4bd46c5
+
+
 
 The various security functions are in these files:
 - masking module is within "assets/js/xyz.js" 
