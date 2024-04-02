@@ -12,6 +12,8 @@ The paper on the tool, "MapSafe: A complete tool for achieving geospatial data s
 https://onlinelibrary.wiley.com/doi/10.1111/tgis.13094 <br>
 https://onlinelibrary.wiley.com/doi/epdf/10.1111/tgis.13094
 
+https://mapsafe.xyz/images/safeguard.mp4
+
 The various security functions are in these files:
 - masking module is within "assets/js/xyz.js" 
 - hexagonal binning is within "assets/js/h3_binning.js" and "assets/js/h3_binning_verification.js"
