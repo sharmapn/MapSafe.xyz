@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="plugins/slick/slick.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/theme/style.css">
 
   <!-- GIF Player -->
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
@@ -40,6 +40,27 @@
   <script src="assets/js/jquery.gifplayer.js"></script>
 
   <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
+
+  <!-- Matomo analytics captured to improve our tool. No data is stored on the cloud, as they are stoed on the MapSafe server.
+	  Need to know 
+	  - how much the tool is used, 
+	  - if users are primarily using computers or mobile, 
+	  - if sageguard and verification pages in their respective pages are used 
+  -->
+	<script>
+		var _paq = window._paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		var u="//mapsafe.xyz/admin/matomo/";
+		_paq.push(['setTrackerUrl', u+'matomo.php']);
+		_paq.push(['setSiteId', '1']);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+	</script>
+	<!-- End Matomo Code -->
 
 </head>
 
@@ -100,13 +121,31 @@
 					<p>First, make sure the data you want to mask is in a shapefile format. Mapsafe can only load zipped shapefiles. Once you have the zip file, just click the 'Choose File' button in Upload tab and select the zipped shapefile from your file system, as shown in the video at the end of this page.</p>
 					
 
-          <h3 id="masking" >What is geographic masking?</h3>
+          <h3 id="maskingguide">What is geographic masking?</h3>
 					<p>Geographic masks are a set of techniques that alter the location of points in a map to protect privacy without overly affecting any spatial patterns. In other words, <i>geographic masks allow researchers to publish useful maps of approximate locations, without exposing sensitive data or violating anyone's privacy</i>. Of course, this is a trade-off: with more masking comes more privacy, but this privacy comes as the cost of <i>information loss</i>. If we apply too much masking to our data, the end result may not resemble the original data whatsoever. While the balance between privacy and information loss can be tricky, its best to air on the side of privacy.</p>
 				
 					<p> Mapsafe uses the <a href="https://maskmy.xyz/" target="_blank"<font color="blue">Maskmy.XYZ</font> </a> tool for masking. The tool performs donut masking, which is a funny term for a simple concept: moving each point randomly between a minimum and maximum distance. 
 					A more comprehensive explanation about the masking feature can be found on this <a href="https://onlinelibrary.wiley.com/doi/10.1111/tgis.12606" target="_blank" <font color="blue">document.</font> </a> </p>
 
-          <img src="https://maskmy.xyz/images/donutmasking.PNG" alt="Donut masking" style="width:600px;height:300px;">
+          <img src="https://maskmy.xyz/images/donutmasking.PNG" alt="Donut masking" style="width:600px;height:290px;">
+          <br><br>
+
+           <h3 id="binningguide">What is hexagonal binning?</h3>
+					   <p>Hexagonal binning (hexbinning) is the other option for anonymising geospatial datasets in MapSafe. Geographic
+             points are aggregated into hexagonal cells using Uber's <a href="https://github.com/uber/h3-js/" target="_blank"<font color="blue">h3-js library</font> </a> 
+             Users can choose the spatial resolution (i.e., the Uber H3 spatial indexing level) along with the buffer radius for encoding.
+            The buffer radius (in KM) allows specification of how far the coverage of the binning should span. </p>
+            
+            <p>Depending on
+            the area depicted in the dataset, a suitable spatial resolution level will need to be chosen to balance privacy and
+            utility. Large hexagons (lower resolution) would result in many distant locations shown in the same cell, while small
+            hexagons (higher resolutions) may present results that are too sparse to cover the entire area.
+            Therefore, a resolution size needs to be chosen that covers the entire area (i.e., dense representations) and contains
+            a small cell size (i.e., preserving location details) to better balance the trade-off between spatial coverage and
+            location details than other H3 indexing levels.</p>
+
+          <img src="https://mapsafe.xyz/images/binning_guide.png" alt="Hexagonal Binning" style="width:600px;height:290px;"> <br>
+          <p>(Image acquired from https://www.kontur.io/blog/why-we-use-h3/) </p>
           <br><br>
 
 					<h3 id="encryption">What is encryption?</h3>
@@ -130,15 +169,19 @@
             <li>5 terms of the full passphrase to encrypt the `more' masked dataset.</li>
           </ul>
 					
-          <p>These passphrases are required to later decrypt to each of the three levels. <br> <br>
-          <img src="images/encdeclevels.png" alt="Encryption decryption levels" style="width:900px;height:180px;">
-          <br><br>
+          <p>These passphrases are required to later decrypt to each of the three levels.</p>
 
-          A detailed description of the encryption and decryption proceses are provided in this <a href="images/EncDecFlow.pdf" target="_blank"> 
-          <font color="blue">document</font> </a> 
+          <p>A detailed description of the encryption and decryption proceses are provided in this image. <br> <br>
+          <img src="https://mapsafe.xyz/images/EncDecFlow.png" alt="Encryption Decryption Flow" style="width:800px;height:350px;">
+          <br><br>
+          <!-- <a href="images/EncDecFlow.pdf" target="_blank"> 
+          <font color="blue">document</font> </a> -->
           </p>
           <br>
           
+          The obfuscation (masking and hexabinning) and encryption are carrried out at multipe levels: <br> <br>
+          <img src="images/encdeclevels.png" alt="Encryption decryption levels" style="width:900px;height:180px;">
+          <br><br><br>
 
 					<h3 id="notarisation" > What is notarisation?</h3>
 					<p> Notarisation create a digital fingerprint of the data. Usually this is done via a cryptographic hash function that generates a 64 character string. Even the slightest change in the data creates a completely different hash value. 

@@ -29,7 +29,7 @@
 	<!-- Slick CSS -->
 	<link rel="stylesheet" href="plugins/slick/slick.css">
 	<!-- Main Stylesheet -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="assets/css/theme/style.css">
 
 	<!-- My code start here -->
 	<link rel="stylesheet" href="assets/css/ol.css" /> 
@@ -78,14 +78,14 @@
 
 	<!-- Mapbox Libraries for H3 Binning -->	
 	<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.13.0-rc.4/dist/mapbox-gl.css" /> 
-	<link rel="stylesheet" href="/css/binningMap.css" />  <!-- css style used for binning Map  -->
+	<link rel="stylesheet" href="assets/css/binningMap.css" />  <!-- css style used for binning Map  -->
 	<script src="https://unpkg.com/d3-fetch@2.0.0"></script>
 	<script src="https://unpkg.com/maplibre-gl@1.13.0-rc.4"></script>
 	<script src="https://unpkg.com/h3-js@3.7.0"></script>
 		
 	<!-- New Toggle Button  -->
 	<script src="assets/js/buttonstrip.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/mainNewToggleButton.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/theme/mainNewToggleButton.css">
 	
     <script type="text/javascript">
 
@@ -173,6 +173,27 @@
 	<script type="module" src="/assets/js/H3binning.js">
 		
 	</script>  	
+
+	<!-- Matomo analytics captured to improve our tool. No data is stored on the cloud, as they are stoed on the MapSafe server.
+	  Need to know 
+	  - how much the tool is used, 
+	  - if users are primarily using computers or mobile, 
+	  - if sageguard and verification pages in their respective pages are used 
+  -->
+	<script>
+		var _paq = window._paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		var u="//mapsafe.xyz/admin/matomo/";
+		_paq.push(['setTrackerUrl', u+'matomo.php']);
+		_paq.push(['setSiteId', '1']);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+	</script>
+	<!-- End Matomo Code -->
 	
 </head>
 
@@ -289,7 +310,7 @@
 										
 										<div id="Masking"> 
 											<div> 
-												<span><strong>Masking</strong>: set the minimum and maximum distance in meters to move points: </span> <span class="icon2 fa-info-circle tooltip2"><span class="tooltiptext"></span></span>
+												<span><strong>Masking</strong>: set the minimum and maximum distance in meters to move points: </span> <span class="icon2 fa-info-circle tooltip2"><span class="tooltiptext">Masking distances must be chosen carefully. For guidance on selecting a distance, check out the <a style="color: #a00808;" href="https://mapsafe.xyz/safeguarding-guide.html#maskingguide" target="_blank">masking guide</a></span></span>
 												<br> 
 												<div class="slideContainer">
 													<input type="range" min="10" max="500" step="5" value="30" class="slider2" id="minDistInput">
@@ -321,7 +342,7 @@
 										
 										<div id="Binning" style="display: none;">
 											<div>
-												<span><strong>Binning</strong>: set the resolution for H3 binning, so the given point will be aggregated </span> <span class="icon2 fa-info-circle tooltip2"><span class="tooltiptext">Masking distances must be chosen carefully. For guidance on selecting a distance, check out the <a style="color: #a00808;" href="#maskingguide">masking guide</a></span></span>
+												<span><strong>Binning</strong>: set the resolution for H3 binning, so the given point will be aggregated </span> <span class="icon2 fa-info-circle tooltip2"><span class="tooltiptext">Binning parameters must be chosen carefully. For guidance on selecting these, check out the <a style="color: #a00808;" href="https://mapsafe.xyz/safeguarding-guide.html#binningguide" target="_blank">binning guide</a></span></span>
 												<br>
 												<div id="controlContainer"> 
 													<span> <label for="hexResolution">Resolution</label> <input id="hexResValueInput" type="range" min="6" max="10" step="1" value="7" /> <span id="hexResValue">7</span> </span> 
@@ -352,7 +373,7 @@
 													<input type="radio" id="fine"         	name="vol_safeguard" value="1" value="Red" required> 	<label for="fine">Fine&nbsp;&nbsp;</label>	
 													<input type="radio" id="medium" 		name="vol_safeguard" value="2" value="Yellow" >	 		<label for="medium">Add medium&nbsp;&nbsp;</label>
 													<input type="radio" id="coarse" 		name="vol_safeguard" value="3" value="Green"  >   		<label for="coarse">All Three&nbsp;&nbsp;</label>
-													<span class="msg" style="color:red;font-weight:bold"></span> <span class="icon2 fa-info-circle tooltip2"><span class="tooltiptext">Choosing fine level includes only the original dataset, medium additionally includes a masked layer, while three levels additionally includes a heavily-masked dataset. Check out the <a style="color: #a00808;" href="https://mapsafe.locative.dev/safeguarding-guide.html#encryption" target="_blank">encryption guide</a></span></span> &nbsp;&nbsp; 										
+													<span class="msg" style="color:red;font-weight:bold"></span> <span class="icon2 fa-info-circle tooltip2"><span class="tooltiptext">Choosing fine level includes only the original dataset, medium additionally includes a masked layer, while three levels additionally includes a heavily-masked dataset. Check out the <a style="color: #a00808;" href="https://mapsafe.xyz/safeguarding-guide.html#encryption" target="_blank">encryption guide</a></span></span> &nbsp;&nbsp; 										
 												</div>												
 											</span>
 
@@ -366,12 +387,13 @@
 								</fieldset>	
 								<fieldset>										
 									<p>The encrypted volume's file name and hash value uniquely identifies it. Storing these on the blockchain <br>
-										enables anyone to prove its authenticity.	<span class="icon2 fa-info-circle tooltip2"> <span class="tooltiptext">This hash value will verify the originality of this encrypted volume through the verification module. For guidance on notarisation, check out the <a style="color: #a00808;" href="https://mapsafe.locative.dev/safeguarding-guide.html#notarisation" target="_blank" >notarisation guide</a></span></span>																				
+										enables anyone to prove its authenticity.	<span class="icon2 fa-info-circle tooltip2"> <span class="tooltiptext">This hash value will verify the originality of this encrypted volume through the verification module. For guidance on notarisation, check out the <a style="color: #a00808;" href="https://mapsafe.xyz/safeguarding-guide.html#notarisation" target="_blank" >notarisation guide</a></span></span>																				
 									</p>
 									<code><output id=hashOutput>████████████████████████████</output></code><button id=copyHashBut> 📋 </button></span>								
 								
 									<div>										
-										<button style="margin: 0.5rem 0 .5rem 0; width: 30%;" id="mintButton" class="buttondss buttondss6" >Mint on Blockchain</button> 
+										<!-- <button style="margin: 0.5rem 0 .5rem 0; width: 30%;" id="mintButton" class="buttondss buttondss6" >Mint on Blockchain</button> -->
+										<button style="margin: 0.5rem 0 .5rem 0; width: 30%;" id="mintButton" class="buttondss buttondss6"> <i class="loading-icon fa fa-spinner fa-spin hide"></i> <span class="btn-txt-nota">Notarise on Blockchain</span> </button>     
 									</div> 
 																		
 									<div>
@@ -598,6 +620,9 @@
 								showZippedFileContents("encryptedInput")}
 							);
 							$('#mintButton').click(function(){
+								$(".loading-icon", this).removeClass("hide");
+								$(".button").attr("disabled", true);
+								$(".btn-txt-nota").text("Notarising...");
 								minting()}
 							);
 							//print receipt

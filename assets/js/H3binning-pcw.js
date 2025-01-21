@@ -1,12 +1,6 @@
-// H3-JS Binning code
-// The code is inspired from this H3-JS tutorial https://observablehq.com/@nrabinowitz/h3-tutorial-using-point-layers?collection=@nrabinowitz/h3-tutorial. 
-// However, most of this script is based on the example from
-//     https://gis.utah.gov/developer/applications/suitability/ and https://github.com/agrc/gis.utah.gov/tree/master/developer/applications/suitability
-//     https://github.com/agrc/gis.utah.gov/blob/master/developer/applications/suitability/index.html
+//This code is for point cloud weight calculation
 
-// The above example focusesd on point clouds, not Hexabinning. Thus, a slider had to be added and this line had to be changed 
-// { hexagons: pointCloudslayer, weight: getSliderValue("hexResValueInput") }   //pointCloudsWeight
-
+//Begin binning code
 import geojson2h3 from "https://cdn.skypack.dev/geojson2h3@1.0.1";
 
 // Config
@@ -21,8 +15,6 @@ const config = {
 
 // Utilities
 function normalizeLayer(layer, baseAtZero = false) {
-  if (layer == null)
-    return;
   const hexagons = Object.keys(layer);
   // Pass one, get max
   const max = hexagons.reduce(
@@ -39,7 +31,7 @@ function normalizeLayer(layer, baseAtZero = false) {
   return layer;
 }
 
-//Invoke an module function 
+//This is one way we can invoke an module function 
 const element = document.getElementById("downloadBinned");
 element.addEventListener("click", function () {
   //document.getElementById("demo").innerHTML = "Hello World";
@@ -49,14 +41,20 @@ element.addEventListener("click", function () {
 
 //Maybe we have to import this function 
 export function downloadBinnedFn() {
-  //Downloading geojson
+  //for downloading geojson
   var downloadGeoJSON = true;
   if(downloadGeoJSON)
   {      
-    console.log("Downloading GeoJSON");    
+    console.log("Downloading GeoJSON");
+    //console.log(JSON.stringify(masked.reprojected));
+    //console.log("Layer deletion started");
+    //delete masked.data.layer;
+    
     binnedGeoJSON = JSON.parse(  JSON.stringify(binnedGeoJSON)   )
     console.log("binnedGeoJSON " + binnedGeoJSON)	    
-    saveJson(binnedGeoJSON, "binned.geojson");							
+
+    saveJson(binnedGeoJSON, "binned.geojson");
+    //console.log("masked.data " + JSON.parse(masked.data))									
   }
   
   console.log("Downloading Binned Data");
@@ -69,18 +67,16 @@ export function downloadBinnedFn() {
 function getSliderValue(id) {
   const input = document.getElementById(id);
   const value = parseFloat(input.value);
+  //console.log(`${id}: ${value}`);
   return value;
 }
 
 // Transform a kilometer measurement to a k-ring radius
 function kmToRadius(km, resolution) {
   return Math.floor(km / h3.edgeLength(resolution, h3.UNITS.km));
-  //return h3.edgeLength(resolution, h3.UNITS.km);
 }
 
 function bufferPointsLinear(geojson, radius, h3Resolution) {
-  if (geojson == null)
-    return;
   const layer = {};
   geojson.features.forEach((feature) => {
     const [lng, lat] = feature.geometry.coordinates;
@@ -99,7 +95,7 @@ function bufferPointsLinear(geojson, radius, h3Resolution) {
   return normalizeLayer(layer);
 }
 
-//New function, from stackexchange answer: https://jsbin.com/nosoyonemi/edit?html,js
+//17-Oct-2022 New function, from stackexchange answer: https://jsbin.com/nosoyonemi/edit?html,js
 function interpolateColor(value, stops, colors) {
   const index = stops.findIndex((stop) => value <= stop);
   if (index < 0) {
@@ -119,21 +115,19 @@ function interpolateColor(value, stops, colors) {
   return ol.color.asString(result);
 }
 
+var pointClouds; //, binnedGeoJSON;
 var h3Reso;
 
 //retrieve the data in geojson and return it
 async function getData() {
-  //Instead of the point weight, we need the hexagonal bining - which changes the size of the hexagons
-  //Thus, this cane bechanged but using the same variable to represent hexagons
-  //https://github.com/uber/h3-js/issues/177#event-9178541918
-  var hexagonal_binning_resolution = getSliderValue("hexResValueInput");  //previously 'pointCloudsWeight' from example
-  //first lets get the buffer radius
-  const bufferRadiusValue = getSliderValue("bufferRadiusInput");  
+  //console.log('getData');
 
-  console.log('\thexagonal_binning_resolution '+ hexagonal_binning_resolution + '\tbufferRadiusValue ' + bufferRadiusValue);   
+  //first lets get the buffer radius
+  const bufferRadiusValue = getSliderValue("bufferRadius");
+  console.log('\tbufferRadiusValue ' + bufferRadiusValue);
+
   //then the original code
-  //Instead of the point weight, need the hexagonal bining - which changes the size of the hexagons
-  const h3Resolution = hexagonal_binning_resolution; //config.h3Resolution;
+  const h3Resolution = config.h3Resolution;
   h3Reso = h3Resolution;
   // Data Layers
   const pointCloudslayer = normalizeLayer(
@@ -141,9 +135,12 @@ async function getData() {
     bufferPointsLinear(sensitive.data, kmToRadius(bufferRadiusValue, h3Resolution), h3Resolution)
   );
 
+  var points_cloud_weight = getSliderValue("pointCloudsWeight");  
+  console.log('\tpoints_cloud_weight '+ points_cloud_weight);  
+
   // Combining Layers
   const mapLayers = [
-    { hexagons: pointCloudslayer, weight: getSliderValue("hexResValueInput") }   //pointCloudsWeight
+    { hexagons: pointCloudslayer, weight: getSliderValue("pointCloudsWeight") }
   ];
 
   const combinedLayers = {};
@@ -156,30 +153,18 @@ async function getData() {
   return combinedLayers;
 }
 
-//More binned layer 
+//16 Feb 2023 more binned layer 
 async function getData_more_binned_layer() {
-  // Combining Layers
-  // This is the main Hexabinning value. Ensure its more than 0, in that case 0 - the last value
-  var hexagonal_binning_resolution = getSliderValue("hexResValueInput"); //pointCloudsWeight
-  //lets check for this value first, else exit
-  //first, get the buffer radius
-  const bufferRadiusValue = getSliderValue("bufferRadiusInput");  
-
-  //h3resolution_more = h3Resolution; //set this in dstools.js
-  var hexagonal_binning_resolution_more = hexagonal_binning_resolution - 1;     //reduce the resolution by one  ..before it was divide by 2 which was inccoreect way of doing it
-  //hexagonal_binning_resolution_more = Math.ceil(hexagonal_binning_resolution);  //cant have fractions, need whole numbers
-  if (hexagonal_binning_resolution_more < 0) //ensure within bounds
-  hexagonal_binning_resolution_more = 0;  
-     
-  buffer_radius_more = bufferRadiusValue + 0.5; //we just add 0.5 (km) before it was as twice and set the value in dstools.js
+  //first lets get the buffer radius
+  const bufferRadiusValue = getSliderValue("bufferRadius");   
+  buffer_radius_more = bufferRadiusValue * 2; //have it as twice and set the value in dstools.js
   //make sure the buffer radius is less than 1
-  //if (buffer_radius_more >= 1) 
-  //  buffer_radius_more = 0.99;
-  console.log('\thexagonal_binning_resolution_more '+ hexagonal_binning_resolution_more + '\t bufferRadiusValue_more ' + buffer_radius_more); 
+  if (buffer_radius_more >= 1) 
+    buffer_radius_more = 0.99;
+  console.log('\tbufferRadiusValue_more ' + buffer_radius_more); 
 
   //Resolution is just the map zoom value. then the original code
-  //Instead of point weight we need the hexagonal bining - which changes the size of the hexagons
-  const h3Resolution = hexagonal_binning_resolution_more; //config.h3Resolution; // * 2;  //have it as twice
+  const h3Resolution = config.h3Resolution; // * 2;  //have it as twice
   //console.log('h3resolution_more '+ h3resolution_more);
   h3Reso = h3Resolution;
   
@@ -189,8 +174,17 @@ async function getData_more_binned_layer() {
     bufferPointsLinear(sensitive.data, kmToRadius(bufferRadiusValue, h3Resolution), h3Resolution)
   );
 
+  // Combining Layers
+  // This is the main Hexabinning value. Ensure its more than 0, in that case 0 - the last value
+  var points_cloud_weight_more = getSliderValue("pointCloudsWeight");
+  //h3resolution_more = h3Resolution; //set this in dstools.js
+  points_cloud_weight_more = points_cloud_weight_more / 2;
+  if (points_cloud_weight_more < 0) //ensure within bounds
+      points_cloud_weight_more = 0;  
+  console.log('\tpoints_cloud_weight_more '+ points_cloud_weight_more);
+
   const mapLayers = [
-    { hexagons: pointCloudslayer, weight: hexagonal_binning_resolution_more }
+    { hexagons: pointCloudslayer, weight: points_cloud_weight_more }
   ];
 
   const combinedLayers = {};
@@ -212,8 +206,7 @@ function init() {
     sources: {
       osm: {
         type: "raster",
-        //tiles: ["https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
-        tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
+        tiles: ["https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
         tileSize: 256,
         attribution: "&copy; OpenStreetMap Contributors",
         maxzoom: 19
@@ -228,7 +221,7 @@ function init() {
     ]
   };
 
-  console.log('Initialising initial hexabinning map canvas');
+  console.log('Initialising initial hexabiining map canvas');
   const map = new mapboxgl.Map({
     container: document.getElementById("mapContainer"),
     center: [config.lng, config.lat],
@@ -250,21 +243,20 @@ function init() {
       });
     }  
     
-    //One way we can invoke an module function. 
+    //21-Feb 2023 attach an event listener to the display button so the 
+    //This is one way we can invoke an module function. 20 Feb 2023.
     const element2 = document.getElementById("displayMap");
     element2.addEventListener("click", function () {
-            
+      console.log('display button event listener Fn()')
+      
       if (maskingFlag === 'true') {
         console.log("Masking ");
       }
 			else{
         console.log("Binning "); 
         update_map_centre(map);
-        //getData();
-        refreshMap(map);
       }
-    });    
-
+    });
   });  
 }
 
@@ -273,9 +265,10 @@ export function update_map_centre(map){
   map.setCenter([ map_centre_lon , map_centre_lat ]);
 }
 
-//For Binning, add an initial layer to the map, using the selected OpenLayers style
-//Called when user chooses slider from masking to binning,and display the uploaded layer
+//For Binning, we add an initial layer to the map, using the selected OpenLayers style
+// call this when user chooses slider from masking to binning,and display the uploaded layer
 export function AddHexBinningLayertoMap(binnedGeoJSON, styleChoice) {
+  console.log("A")
   //map.removeLayer(sourceGeoJSON.layer);
   var source = new ol.source.Vector({
     features: (new ol.format.GeoJSON()).readFeatures(binnedGeoJSON, { featureProjection: 'EPSG:3857' })
@@ -297,34 +290,31 @@ export function AddHexBinningLayertoMap(binnedGeoJSON, styleChoice) {
 
 //this function is used during safeguarding
 async function refreshMap(map) {
-  //getData function reads the slider values, does the computation, bins, and returns the geojson
-
-  if (map_data_loaded == false) //bufferRadiusValue == 0) //for when the page loads the first time, as there is no dataset loaded yet
-    return;                     //just exit to prevent a null error for 'hexagons' variable 
-
+  //getData function read the slider values, does the computation, bins, and returns the geojson
   const combinedLayers = await getData();
-  //Compute the values for a more-binned layer
+  //16 Feb 2022 .. compute the values for a more binned layer
   const combinedLayers_more = await getData_more_binned_layer()
 
-  //take the map and hexagon, transform the hexagon map into geojson and display
+  // take the map and hexagon, transform the hexagon map into geojson and display
   renderHexes(map, combinedLayers, combinedLayers_more);
   //renderHexes_from_loaded_geojson(map, combinedLayers, combinedLayers_more);
   console.log('Map Refreshed');
+  //to see if download works
+  //downloadBinnedFn();
   
   //enable multi-step  continue button
   document.getElementById("thirdnextaction-button").disabled = false;
 }
 
-// Previous function
+// Old function
 function renderHexes(map, hexagons, hexagons_more_binned) {
-
   // Transform the current hexagon map into a GeoJSON object
   binnedGeoJSON = geojson2h3.h3SetToFeatureCollection(
     Object.keys(hexagons),
     (hex) => ({ value: hexagons[hex] })
   );
   
-  //Second, more binned layer - only for storing in outer layer of encrypted volume, not for display
+  //16-Feb-2023...second, mre binned layer - only for storing in outer layer of encrypted volume, not for display
   binnedGeoJSON_more = geojson2h3.h3SetToFeatureCollection(
     Object.keys(hexagons_more_binned),
     (hex) => ({ value: hexagons_more_binned[hex] })

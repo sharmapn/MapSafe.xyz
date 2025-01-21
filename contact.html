@@ -31,9 +31,36 @@
   <link rel="stylesheet" href="plugins/slick/slick.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/theme/style.css">
 
-  <?php require 'logic.php'; ?>
+  <!-- Guestbook libraries-->
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="guestbook.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Matomo analytics captured to improve our tool. No data is stored on the cloud, as they are stoed on the MapSafe server.
+	  Need to know 
+	  - how much the tool is used, 
+	  - if users are primarily using computers or mobile, 
+	  - if sageguard and verification pages in their respective pages are used 
+  -->
+	<script>
+		var _paq = window._paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		var u="//mapsafe.xyz/admin/matomo/";
+		_paq.push(['setTrackerUrl', u+'matomo.php']);
+		_paq.push(['setSiteId', '1']);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+	</script>
+	<!-- End Matomo Code -->
+
 
 </head>
 
@@ -95,9 +122,12 @@
 <section class="contact-form">
   <div class="container">
 
-    We would like your feedback. <br>
+    Use the form below to provide your comments and we will get back to you as soon as we can. <br>   
+    The tool also has a <a href = "https://github.com/sharmapn/mapsafe.xyz" target="_blank">Github repository</a> which can be used for providing feedback. <br>
+    
+    <!-- PHP Guestbook code from https://www.phpjabbers.com/free-guestbook-script/ -->
 
-    The tool has a <a href = "https://github.com/sharmapn/mapsafe.xyz" target="_blank">Github repository</a> which can be used for providing feedback. <br>
+    <div id="comments"> 
         
   </div>
 </section>
@@ -133,21 +163,19 @@
 
 
     <!-- Main jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- library imports removed due to guestbook code conflicts -->
+    
+    
     <!-- Bootstrap 3.1 -->
-    <script src="plugins/bootstrap/bootstrap.min.js"></script>
-    <!-- slick Carousel -->
-    <script src="plugins/slick/slick.min.js"></script>
-    <script src="plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <!-- filter -->
-    <script src="plugins/shuffle/shuffle.min.js"></script>
-    <script src="plugins/SyoTimer/jquery.syotimer.min.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-    <script src="plugins/google-map/map.js"></script>
+   
+   
 
-    <script src="assets/js/template_script.js"></script>
+    
+   
+   
 
+    <!-- guestbook library-->
+    <script src="guestbook.js"></script>
     </body>
 
     </html>

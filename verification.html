@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="plugins/slick/slick.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/theme/style.css">
 
 	
   <!-- My added scripts-->  
@@ -60,7 +60,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="assets/css/multi-step/style2.css">	 maybe dont need on this page -->
   <link rel="stylesheet" href="assets/css/multi-step/multistepstyle.css"> 
-  <!-- <link rel="stylesheet" href="css/multistepdemo.css"> -->
+  <!-- <link rel="stylesheet" href="assets/css/theme/multistepdemo.css"> -->
   
   <!-- h3binning  -->
   <script src="assets/js/geojson2h3.js"></script>	<!-- geojson2h3 created using browserify  -->
@@ -69,7 +69,7 @@
 
   <!--  Mapbox Libraries for H3 Binning -->	
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.13.0-rc.4/dist/mapbox-gl.css" /> 
-  <link rel="stylesheet" href="/css/binningMap.css" />  <!-- css style used for binning Map  -->
+  <link rel="stylesheet" href="assets/css/binningMap.css" />  <!-- css style used for binning Map  -->
   <script src="https://unpkg.com/d3-fetch@2.0.0"></script>
   <script src="https://unpkg.com/maplibre-gl@1.13.0-rc.4"></script>
   <script src="https://unpkg.com/h3-js@3.7.0"></script>
@@ -123,6 +123,28 @@
 	//update_map_centre();
 	//end of binning code 
   </script> 
+
+  <!-- Matomo analytics captured to improve our tool. No data is stored on the cloud, as they are stoed on the MapSafe server.
+	  Need to know 
+	  - how much the tool is used, 
+	  - if users are primarily using computers or mobile, 
+	  - if sageguard and verification pages in their respective pages are used 
+  -->
+  <!-- Matomo analytics captured to improve our tool. Need to know if the tool is useful and in what way. -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//mapsafe.xyz/admin/matomo/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
 
 </head>
 

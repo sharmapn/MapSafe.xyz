@@ -360,7 +360,9 @@ var xyz = {
                 // Spruill's Measure Calculation
                 if(calculate_sp_measure){    
                     nearestPoint = turf.nearestPoint(currentFeatureMasked, sensitive.data)
+                    //console.log('nearestPoint: ' + JSON.stringify(nearestPoint))
                     actualDist = turf.nearestPoint(currentFeatureMasked, currentFeature)
+                    //console.log('actualDist: ' + JSON.stringify(nearestPoint))
                     if (nearestPoint.properties.distanceToPoint == actualDist.properties.distanceToPoint) {
                         spruill.push("yes");
                     }
