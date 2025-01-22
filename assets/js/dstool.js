@@ -682,7 +682,7 @@ async function decryptData(objFile, encryptedBytes, levelToDecryptTo, currentLev
                 return false;  
             }
             //For levels 3 and 2, the process havent yet reached the 'leveltodecryptto' that the user wants
-            //But dont do this for level 1, as there is no further we can go
+            //But this should not be applied for level 1, as there is no further to go
             if ((currentLevel != levelToDecryptTo)  && currentLevel == 3 || currentLevel == 2) //just to make sure not to keep on going decrypting and only attempt it two more times (middle and inner level)
             {
                 console.log("Trying to encrypt the next (inner) level ");

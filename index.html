@@ -32,7 +32,29 @@
   <link rel="stylesheet" href="plugins/slick/slick.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/theme/style.css">
+
+  <!-- Matomo analytics captured to improve our tool. No data is stored on the cloud, as they are stoed on the MapSafe server.
+	  Need to know 
+	  - how much the tool is used, 
+	  - if users are primarily using computers or mobile, 
+	  - if sageguard and verification pages in their respective pages are used 
+  -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//mapsafe.xyz/admin/matomo/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+
 
 </head>
 
@@ -139,7 +161,7 @@
     <div class="row">
       <div class="col-12 text-center">
         <div class="section-title">
-          <h2>SAFEGUARDING </h2>
+           <a href="safeguard.html" target="_blank"><h2>SAFEGUARDING </h2></a>
           <p>MapSafe uses three techniques to completely safeguard sensitive geospatial datasets. <br>
           These techniques are carried out in a sequential order.</p>
         </div>
@@ -164,7 +186,7 @@
           <h4>Encryption</h4>
           <p>The masked geospatial dataset is further protected using 
           <b>encryption</b> where the original data is transformed into a form unrecoverable by an adversary.  
-          MapSafe uses the Web.Cryto toolkit library whiich is in-built within the web browser. </p>
+          MapSafe uses the Web.Cryto toolkit library which is in-built within the web browser. </p>
         </div>
       </div>
       <div class="col-lg-3 ">
@@ -183,6 +205,14 @@
 </section>
 <!-- Call to action Start -->
 
+
+<div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+					<iframe width="600" height="350"
+						src="https://www.youtube.com/embed/IfVpUDfROUQ?autoplay=0"> 
+						<p>This video shows how to safeguard and verify your dataset, from start to finish!</p> 
+					</iframe>
+				</div>
+
 <!-- Main image is from here https://eos.com/blog/gis-mapping/ -->
 
 <!-- Service Start -->
@@ -191,8 +221,8 @@
     <div class="row">
       <div class="col-12 text-center">
         <div class="section-title">
-          <h2>Verification </h2>
-            <p>The verification process involves first comparing the before and after digital signatures of the encrypted file, 
+          <a href="verification.html" target="_blank"><h2>Verification</h2></a>
+            <p>The verification process compares the before and after hash values of the encrypted file, 
             after which the user can proceed with the decryption and display of the dataset. </p>
             <!-- <br>  Matching values ensures no changes and the user can then proceed with the decryption and display of the dataset.</p>  -->          
         </div>
@@ -214,7 +244,7 @@
           <h4>Decryption</h4>
           <p> 
           <b>Decryption</b> uses  the encrytion key to transform the encrypted data back into the original form. <!-- so that the geospatial data can be viewed. -->
-          Based on the receipients priviledge, a passphrase of certain length will be shared using which 
+          Based on the recipients privilege, a passphrase of certain length will be shared using which 
           the user decrypts to a certain encrypted level, containing different representations of the original data. 
           <!-- Decryption again, is implemented using the Web.Cryto toolkit whiich is in-built within the browser. -->
           </p> 
@@ -224,10 +254,10 @@
         <div class="service-item">
           <i class="icon ion-android-globe"></i>
           <h4>Display </h4>
-          <p>In the final step, the masked geospatial dataset of different resultions is displayed. 
+          <p>In the final step, the geospatial dataset of different resolutions is displayed. 
           <!-- Based on what prvide and what passphrase is shared to the receipient, a corresponsing passphrase is sent via a secure platform.
           Using this a user can decrypt into containing a specific level of obfuscation. -->
-          Based on priviledge, user will see a original or masked repsentation of the original dataset. 
+          Based on their privilege, users will see either the original or a masked representation of the original dataset. 
           </p>
         </div>
       </div>         

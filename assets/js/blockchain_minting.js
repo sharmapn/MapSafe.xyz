@@ -119,7 +119,7 @@ async function minting()
   var receipt = await contract.mintNFT(minting_string); //encrypted file hash_value 
   console.log(receipt)
   console.log("Minting ")
-  var url = `https://goerli.etherscan.io/tx/${receipt.hash}`
+  var url = `https://sepolia.etherscan.io/tx/${receipt.hash}`
   console.log('Transaction Link ' + url)
   var fromAddr = receipt.from;
   console.log('From Wallet Account Address ' + receipt.from)
@@ -130,6 +130,11 @@ async function minting()
 
   $("#TransAddress").html(`<b>Success!</b> The filename and hash value is being minted on Ethereum Blockchain. See URL. 
                           <br> <a href="${url}" target="_blank">${url}</a>`)
+
+   //stop the spinner
+   $(".loading-icon").addClass("hide");
+   $(".button").attr("disabled", false);
+   $(".btn-txt-nota").text("Success!"); 
   
   saveReceipt(minting_string, url, fromAddr, tranx_hash, gas_price); //save the transaction details as pdf
 } 
