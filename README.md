@@ -23,8 +23,8 @@ Watch this GIF to learn how to verify your data, from start to finish!
 https://github.com/sharmapn/MapSafe.xyz/assets/17430034/2db367cf-420f-4278-a144-578db4bd46c5
 
 Additional project guides:
-- Mobile guide: https://mapsafe.xyz/Mobile/
-- QGIS geoprivacy plugin guide: https://mapsafe.xyz/QGISGeoPrivPlugin/
+- Mobile guide: https://mapsafe.xyz/mobile/
+- QGIS geoprivacy plugin guide: https://mapsafe.xyz/QGISPlugin/
 
 
 

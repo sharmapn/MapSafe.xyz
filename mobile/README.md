@@ -16,9 +16,9 @@ This is the GitHub Pages guide for MapSafe Mobile. It follows the layout and pla
 
 ## Publishing
 
-This directory is published from `Mobile/` in the `sharmapn/MapSafe.xyz` repository. GitHub Pages publishes it at:
+This directory is published from `mobile/` in the `sharmapn/MapSafe.xyz` repository. GitHub Pages publishes it at:
 
-`https://mapsafe.xyz/Mobile/`
+`https://mapsafe.xyz/mobile/`
 
 The guide is static and has no build step or external JavaScript dependency. It is suitable for GitHub Pages and can also be opened locally by opening `index.html` in a browser.
 
