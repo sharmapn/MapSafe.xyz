@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+	<style>
+		* {
+		box-sizing: border-box;
+		}
+
+		.row {
+		display: flex;
+		}
+
+		/* Create two equal columns that sits next to each other */
+		.column {
+		flex: 50%;
+		padding: 5px;
+		height: 300px; /* Should be removed. Only for demonstration */
+		}
+	</style>
+
+
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+			<!--
+	        <div class="mb-5">
+			<h3 class="h6">Subscribe for newsletter</h3>
+			  <form action="#" class="colorlib-subscribe-form">
+	            <div class="form-group d-flex">
+	            	<div class="icon"><span class="icon-paper-plane"></span></div>
+	              <input type="text" class="form-control" placeholder="Enter Email Address">
+	            </div>
+	          </form>
+			</div>
+			-->
+
+	        
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+			<div class="container-fluid" style="height: 200px; vertical-align: left" id="home">
+				<div class="row" style="height: 100%">
+					<div class="col" style="text-align: left">
+						<span class="img-wrapper"></span>
+						<img src="images/mapsafe_logo_name.png" style="height: 200px; width: 800px" "vertical-align: left;">
+					</div>
+					<div class="col" style="float:left; position: relative; top: 10%">
+						<div class="text-wrapper">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<hr>
+
+		 
+
+		<style>
+			p {
+				width:100%;				
+				text-align:left;
+			}
+
+		</style>
+
+			<div class="row">
+				<div class="column" >
+						<p>
+							MapSafe QGIS plugin offers location privacy mechanisms for users to protect 
+							their datasets before publishing or putting them on maps.
+
+							The plugin leverages all these security functions 
+							in a workflow to offer a complete geoprivacy approach from their familiar desktop application. 
+
+						</p>
+						<p>
+							
+							Users can first use donut masking or hexagonal binning to obfuscate coordinates, provisioning access to data at lower levels of accuracy. 
+							The resulting datasets, having different levels of detail are then protected using symmetric key encryption, while the passphrase 
+							itself is protected using public key encryption. permitting only intended parties to decrypt it. Finally, to complete the security process, 
+							the final encrypted volume's filename and hash value are notarised on the blockchain as a public record. 
+							<br> <br>
+
+							Data recipients can use the notarised record to verify the encrypted volume's originality and the original dataset therein, 
+							before decrypting and accessing it. 
+							The plugin aims to solve geoprivacy challenges, not currently addressed in other desktop GIS software, by combining security functions 
+							into a single workflow and graphical environment in QGIS. 
+
+						</p>
+						<p>
+							Our QGIS-based geoprivacy plugin replicates and advances our recent browser-based geoprivacy tool of the same name <a href="https://www.mapsafe.xyz" target="_blank">https://www.mapsafe.xyz</a> . 
+							The ``MapSafe: A complete tool for achieving geospatial data sovereignty''  
+							<a href="https://onlinelibrary.wiley.com/doi/10.1111/tgis.13094" target="_blank">paper</a> describes how the tool
+							offers a complete approach for sovereign data owners to safeguard sensitive geospatial data by anonymising, encrypting, and notarising it.
+							This QGIS plugin replicates the funcationality within QGIS for a reliable geoprivacy tool for desktop applications.
+						</p>
+						
+						
+
+
+				</div>
+				<div class="column" >
+					<iframe width="600" height="350"
+						src="https://www.youtube.com/embed/gq4wX3kMTfE?autoplay=0">
+						<p>This video shows how to safeguard and verify your dataset, from start to finish!</p> 
+					</iframe>
+				</div>
+			</div>	
+			
+			
+
+			<style>
+				body {
+					font-family: 'Open Sans', sans-serif;
+					margin: 0;
+					padding: 0;
+					background-color: #f9f9f9;
+					color: #333;
+				}
+		
+				.container {
+					max-width: 1200px;
+					margin: 0 auto;
+					
+				}
+		
+				h1, h2 {
+					color: #4c4c4c;
+					text-align: center;
+				}
+		
+				h1 {
+					font-size: 2.5rem;
+					margin-bottom: 20px;
+				}
+		
+				h2 {
+					font-size: 1.8rem;
+					margin-top: 40px;
+				}
+		
+				
+		
+				.section {
+					background-color: #fff;					
+					margin-bottom: 20px;
+					box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+					border-radius: 8px;
+				}
+		
+				.flex-container {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+				}
+		
+				.flex-item {
+					flex: 1 1 calc(33.333% - 20px);
+					margin: 10px;
+					background-color: #ffffff;
+					padding: 20px;
+					box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+					border-radius: 8px;
+				}
+		
+				.flex-item h3 {
+					text-align: center;
+					color: #4c4c4c;
+					font-size: 1.5rem;
+					margin-bottom: 10px;
+				}
+		
+				.flex-item p {
+					text-align: center;
+				}
+		
+				.icon {
+					font-size: 40px;
+					color: #4c4c4c;
+					text-align: center;
+					margin-bottom: 10px;
+				}
+		
+				.flex-item img {
+					display: block;
+					margin: 0 auto 10px;
+				}
+		
+				@media (max-width: 768px) {
+					.flex-item {
+						flex: 1 1 100%;
+					}
+				}
+
+				/* Ensure headings and text are left-aligned with no padding */
+				.container, .row, .col, .section-title {
+					padding: 0;
+					margin: 0;
+				}
+
+				/* Left-align the text in the container */
+				.container p, .container h2 {
+					text-align: left;
+				}
+
+				/* Optional: Add padding to avoid text touching the edges */
+				.container {
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+
+				/* Ensure consistent text alignment inside flex items */
+				.flex-container .flex-item {
+					text-align: left;
+				}
+
+			</style>
+
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			
+			<style>
+				p {
+					width:100%;				
+					text-align:left;
+				}
+	
+			</style>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-7">
+							<div class="block">
+								<div class="section-title">
+									<h2>About Mapsafe</h2>
+									<p> MapSafe completely safeguards sensitive geospatial datasets using obfuscation, encryption, and notarisation. 
+						These functions are implemented within the browser using popular open source JavaScript libraries without 
+						ever requiring users to install or download any software. 
+						</p>
+								</div>
+								<p>Whether you're a GIS expert, a GIS researcher, or a newbie, if you need to safeguard your geospatial data but aren't quite sure how, 
+						MapSafe makes your life easier and brings previously cumbersome geospatial data safeguarding methods into reach. </p>
+							</div>
+						</div><!-- .col-md-7 close -->
+						<div class="col-md-5">
+							<div class="block">
+								<img src="images/Methodology_QGISPlugin.png" alt="Img">
+							</div>
+						</div><!-- .col-md-5 close -->
+					</div>
+				</div>
+		
+				
+					
+
+			<div class="container">
+				
+				<h2>Safeguarding</h2>
+				<p>MapSafe uses three techniques to completely safeguard sensitive geospatial datasets. These techniques are carried out in a sequential order.</p>
+		
+				<div class="flex-container">
+					<div class="flex-item">
+						<div class="icon"><i class="icon ion-android-pin"></i></div>
+						<h3>Anonymisation</h3>
+						<p>MapSafe first allows users to use donut masking or hexagonal binning functions to anonymise coordinates. This allows users to share maps with approximate locations without overly affecting any spatial patterns, while preventing exposing sensitive data or violating anyone's privacy.</p>
+					</div>
+					<div class="flex-item">
+						<div class="icon"><i class="icon ion-ios-locked"></i></div>
+						<h3>Encryption</h3>
+						<p>The anonymised geospatial dataset is further protected using encryption where the original data is transformed into a form unrecoverable by an adversary. MapSafe uses the PyCryptodome AES Python library which is native to the Operating System, delievering faster speed.</p>
+					</div>
+					<div class="flex-item">
+						<div class="icon"><i class="icon ion-ribbon-b"></i></div>
+						<h3>Notarisation</h3>
+						<p>Finally, MapSafe generates a hash value of the encrypted anonymised geospatial data and notarises it as a public record on the tamper-proof Ethereum blockchain. This approach guarantees that the digital signature remains unchanged and can be used for verification of encrypted datasets.</p>
+					</div>
+				</div>
+		
+				<h2>Access</h2>
+				<p>The verification process compares the before and after hash values of the encrypted file, after which the user can proceed with the decryption and display of the dataset.</p>
+		
+				<div class="flex-container">
+					<div class="flex-item">
+						<div class="icon"><i class="icon ion-android-checkmark-circle"></i></div>
+						<h3>Verification</h3>
+						<p>The data receipient party loads the encrypted data, while MapSafe generates a hash value for verification against the hash stored in the blockchain. Matching values signify the volume has not been tampered with, and the user can then proceed with decryption.</p>
+					</div>
+					<div class="flex-item">
+						<div class="icon"><i class="icon ion-unlocked"></i></div>
+						<h3>Decryption</h3>
+						<p>Decryption uses the encryption key to transform the encrypted data back into the original form. Based on the recipient's privilege, a passphrase of certain length will be shared using which the user decrypts to a certain encrypted level, containing different representations of the original dataset.</p>
+					</div>
+					<div class="flex-item">
+						<div class="icon"><i class="icon ion-android-globe"></i></div>
+						<h3>Display</h3>
+						<p>In the final step, the geospatial dataset of different resolutions is displayed. Based on their privilege, users will see either the original or a masked representation of the original dataset.</p>
+					</div>
+				</div>
+			</div>
+			
+			<h6>
+				Rate the plugin on its Github <a href="https://github.com/sharmapn/MapSafe-QGIS-plugin" target="_blank">repo</a>   if you like!
+			</h6>
+
+			<div class="footer">
+				<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+			</div>
+        
+	  </div>
+
+	  
+			
+	
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+
+  </body>
+</html>

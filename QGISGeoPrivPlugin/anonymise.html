@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+	        
+
+	        
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+        <!-- Encryption -->
+		<h3 class="title w-100">Anonymising</h2> 
+
+			<p> Mapsafe plugin offers halo masking and hexabining to anonymise geospatial datasets. <br>
+			  The <b>Annonymise</b> tab permits these tasks after the geospatial file is loaded into QGIS from the file system:
+			</p>
+			<ul>
+				<li><a href="#masking">Donut Masking</a></li>
+				<li><a href="#hexabinning">Hexagonal binning</a></li>
+			</ul>
+		  	  
+		  <!-- Each of these techniques is described below. </p>  -->
+         
+
+          <h3 id="masking">Geographic masking</h3>
+					<p>Geographic masks are a set of techniques that alter the location of points in a map to protect privacy without overly affecting any spatial patterns. In other words, <i>geographic masks allow researchers to publish useful maps of approximate locations, without exposing sensitive data or violating anyone's privacy</i>. Of course, this is a trade-off: with more masking comes more privacy, but this privacy comes as the cost of <i>information loss</i>. If we apply too much masking to our data, the end result may not resemble the original data whatsoever. While the balance between privacy and information loss can be tricky, its best to air on the side of privacy.</p>
+				
+					<p> Mapsafe uses the <a href="https://maskmy.xyz/" target="_blank"<font color="blue">Maskmy.XYZ</font> </a> tool for masking. The tool performs donut masking, which is a funny term for a simple concept: moving each point randomly between a minimum and maximum distance. 
+					<br>
+					A more comprehensive explanation of the masking feature can be found on this <a href="https://onlinelibrary.wiley.com/doi/10.1111/tgis.12606" target="_blank" <font color="blue">document.</font> </a> </p>
+
+          <img src="https://maskmy.xyz/images/donutmasking.PNG" alt="Donut masking" style="width:600px;height:290px;">
+          <br><br>
+
+
+		  <h4 id="spruillsmeasure"> Spruill's Measure </h4>
+
+			<p>Our privacy rating is an approximate measure of the likelihood that your data could be re-identified by an external party. 
+			Ensuring privacy requires masked locations to be further from the original points, whereas maintaining utility entails the opposite. 
+			To this end, we assist users in determining whether their chosen minimum and maximum boundaries are adequate in preventing the locations 
+			from being vulnerable to re-identification. The <b>Spruill's measure</b> yields a privacy rating based on the percentage of masked 
+			points that are closer to any of the original points (refer to this <a href="https://www.academia.edu/download/44314891/Geographically_masking_health_data_to_pr20160401-7271-i9c9r4.pdf" target="_blank"<font color="blue">paper</font></a>). 
+			This measure is adapted from Spruill's measure, but inverted to represent a privacy rating instead of a disclosure risk rating. 
+			
+			<p>  According to Armstrong et al. (1999), Spruill's measure is defined as follows:
+			    <i>"For each record in the masked dataset (M), calculate the distance between its geographic coordinates and those of each record in the original dataset (X). 
+				    Spruill's measure, denoted as S, is the proportion of records in M that are closer to their corresponding 'parent' records than to any other record in X. 
+				    A masking method where a large number of records are closest to their parent records is considered to have a high disclosure risk." </i>
+
+			<p> To ensure privacy while masking, when choosing the minimum and maximum boundary to displace the coordinates, the user would normally specify a large displacement area (distance between minimum and maximum).  
+				However, the displacement area depends on two factors: 
+				<ol>
+				  <li>since each dataset has a different coverage, the minimum and maximum values need to be chosen accodingly</li>
+				  <li>how much to anonymise would vary depending on the user's requirement. </li>
+				</ol>
+
+			<p> Therefore, for each dataset, a user would normally make multiple masking attempts using the Privacy Rating, to finally determine the best minimum and maximum boundaries based on the user's requirement. 
+				In this regard, Ema can keep adjusting the boundaries until a reasonable rating is achieved. 
+
+			<p>This measure was adopted in the (<a href="https://www.maskmy.xyz" target="_blank"<font color="blue">https://www.MaskMy.xyz web application</font></a>) to assist users in donut masking. 
+			For the same purpose, (<a href="https://www.mapsafe.xyz" target="_blank"<font color="blue">https://www.MapSafe.xyz web application</font></a>) also uses this feature. Once masked, the layers can be saved using the <b>Save</b> button. 
+
+		 <br><br>
+
+		  <h4>Halo masking</h4>	
+
+		  	<p>The first step in the geoprivacy plugin performs geographical masking to create masked representations of the
+			original geographic dataset. The resulting datasets are shared with trusted users at different levels, to give them an
+			approximate location of the sensitive locations they want to hide.
+
+			Two-level masking allows two anonymised datasets to be created. The second level consists of a dataset that is masked with twice the user-provided 
+			minimum and maximum distances. 
+
+			<p>After uploading their confidential point-based geospatial dataset in QGIS, users define the following two parameters to transform point data: 
+			(a) Minimum and (b) maximum masking distance. These two parameters are used to transform each point data to a specific distance at a random angle.
+			Then also specify if they want to perform an additional level of masking.
+			<br><br> 
+
+
+		  The three levels of masked datasets correlate with the following types of users:
+		    <ul>
+				<li> Trusted users who can have access to the original geographic dataset.</a></li>
+				<li> Semi-trusted users who are trusted to some extent who need to see only approximate locations in the map.</a></li>
+				<li> Untrusted users who are not trusted and should only see a heavily mask map.</a></li>
+			</ul>		
+			<br>
+
+		  	<div > <!-- class="image text-center w-100" -->
+				<img class="img-responsive thumbnail" src="images/masking_guide.png">
+			</div>
+			<br>
+
+			<p>To accommodate these three sets of users we generate two sets of masked datasets of the original dataset, to
+			cater for users with different security access. In doing so, the first level contains the original dataset, the second level
+			is masked using the parameters provided by the user, while for the third level of masking, the same parameters are used, 
+			but increased by a certain constant. Using these masks not only provides stronger privacy protection but also produce
+			results that are more like the original data than previous generations of geographic masks.
+			<br> <br>
+
+			<div>
+				<img class="img-responsive thumbnail" src="images/masking_levels.png" style="width:900px;height:750px;">
+			</div>
+
+
+			<br><br>
+			<h3 id="hexabinning">Hexagonal binning</h3>
+			
+			<p>Hexagonal binning (hexbinning) is the other option for anonymising geospatial datasets in the MapSafe plugin. 
+			 This feature permits visualising the density of points and can be used instead of donut masking. 
+			 Geographic points are aggregated into hexagonal cells using Uber's <a href="https://github.com/uber/h3-py/" target="_blank"<font color="blue">h3-py library</font> </a> 
+             Hexagons with more points are represented by darker cells, while those with fewer points are represented by lighter cells. 
+			 Users can choose the spatial resolution (i.e., the Uber H3 spatial indexing level) along with the buffer radius for encoding.
+             The buffer radius (in KM) allows specification of how far the coverage of the binning should span. </p>
+
+			<br> <br>
+
+          <img src="https://mapsafe.xyz/images/binning_guide.png" alt="Hexagonal Binning" style="width:600px;height:290px;"> <br>
+          <p>(Image acquired from https://www.kontur.io/blog/why-we-use-h3/) </p>
+          <br><br>
+
+		  <h4 id="hexabinning">Hexagonal Binning using the MapSafe Plugin</h4>
+
+			<p>A suitable resolution must be chosen to balance privacy and utility depending on the area depicted in the dataset. 
+			Large hexagons (lower resolution) would show many distant locations in the same cell, whereas small 
+			hexagons (higher resolution) might show results that are too sparse to cover the entire area (refer to this <a href="https://geography.wisc.edu/geods/wp-content/uploads/sites/28/2022/05/2021_TGIS_FederatedLearning.pdf" target="_blank"<font color="blue">paper</font></a>). 
+			Therefore, a resolution needs to be chosen that covers the entire area (i.e., dense representations) and 
+			contains a small cell size (i.e., preserving location details) to better balance the trade-off between 
+			spatial coverage and location details than other H3 indexing levels (<a href="https://geography.wisc.edu/geods/wp-content/uploads/sites/28/2022/05/2021_TGIS_FederatedLearning.pdf" target="_blank"<font color="blue">paper</font></a>). 
+			Ema chooses a resolution of 7 (the level of a small city) for the all_clusters_kamloops dataset 
+			and the results are shown in Figure below. The hexagonal binning process of generating hexabins and displaying them is instantaneous. 
+			<br><br>
+
+		  	<div >  <!-- style="width:500px;height:600px;" -->
+				<img class="img-responsive thumbnail" src="images/binning_guide.png">
+			</div>
+
+			<br>
+			<p>After pressing the Binning button, two binned layers are generated.  
+			These two layers cater for different user trust levels, as in the masking scheme. These layers also contain the counts.
+			<ul>
+				<li><a href="#firstlayer"> one with the user-provided resolution, and</a></li>
+				<li><a href="#second;ayer"> the other with one extra binning resolution</a></li>
+			</ul>
+
+			<br>
+			The first generated layer is for the binning resolution
+			<br><br>
+
+			<div >
+				<img class="img-responsive thumbnail" src="images/binning7.png" style="width:800px;height:620px;">
+			</div>
+
+			<br><br>
+			
+			The other generated layer contains one extra binning resolution
+			<br><br>
+
+			<div >
+				<img class="img-responsive thumbnail" src="images/binning6.png" style="width:800px;height:620px;">
+			</div>
+
+			<br><br><br>
+			<div class="footer">
+	        	<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	        </div>
+
+
+	  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+  </body>
+</html>

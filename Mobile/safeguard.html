@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MapSafe Mobile Safeguard workflow: anonymise, encrypt, upload and notarise sensitive field datasets.">
+  <title>Safeguard workflow | MapSafe Mobile</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+  <button class="menu-toggle" aria-label="Open guide menu" aria-expanded="false">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><img class="brand-logo" src="mapsafe_logo.png" alt=""><span>MapSafe<br><small>Mobile guide</small></span></div>
+    <nav aria-label="Guide navigation">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="index.html#getting-started">Getting started</a>
+      <div class="nav-group-label">Safeguard</div>
+      <a class="nav-link active" href="safeguard.html">Safeguard workflow</a>
+      <div class="nav-group-label">Access</div>
+      <a class="nav-link" href="access.html">Access workflow</a>
+      <a class="nav-link" href="safeguard.html#safeguard-gallery">Screenshot archive</a>
+    </nav>
+    <div class="sidebar-foot">NextGIS Mobile extension<br>Open-source research guide</div>
+  </aside>
+
+  <main class="main">
+    <section class="page-hero">
+      <div class="section-kicker">Safeguard workflow</div>
+      <h1>Prepare a safe release</h1>
+      <p class="lead">Keep the authoritative observation under the data custodian’s control while preparing a representation that matches the recipient’s purpose.</p>
+      <p>Safeguarding is a sequence of decisions rather than a single button. The owner can create an anonymised layer, encrypt the original or an anonymised representation for selected OpenPGP recipients, upload permitted artefacts to the community, and optionally notarise the resulting package.</p>
+      <div class="hero-actions"><a class="button primary" href="#anonymise">Start with anonymisation</a><a class="button secondary" href="access.html">Go to Access</a></div>
+    </section>
+
+    <section id="anonymise">
+      <div class="section-kicker">Safeguard · 01</div>
+      <h2>Anonymise without overwriting the source</h2>
+      <p>Start with the selected point layer. The authoritative source remains unchanged while MapSafe creates a separate representation for recipients who need spatial patterns but not exact coordinates. The result card can be collapsed so the map remains visible while the owner decides whether to save, repeat, stop, upload, or continue.</p>
+      <div class="feature-grid">
+        <div class="feature-card"><h3>Halo masking</h3><p>Choose minimum and maximum displacement distances. Each point is moved to a random position within that interval. The inverted Spruill score provides a readable indication of parent-nearest disclosure risk; a higher score communicates lower risk.</p></div>
+        <div class="feature-card"><h3>Hexagonal binning</h3><p>Choose an H3 resolution and aggregate points into counted hexagons. Darker cells indicate greater density while the individual source coordinates are no longer displayed as the shared representation.</p></div>
+      </div>
+      <p class="workflow-note"><strong>Practical choice:</strong> use halo masking when approximate point locations are useful; use hexagonal binning when the recipient needs distribution or density rather than individual points.</p>
+      <div class="gallery" data-gallery="anonymise"></div>
+      <div class="subsection" id="hexbin">
+        <h3>Hexagonal-binning sequence</h3>
+        <p>The following three panels are the hexbinning sequence used in the manuscript: choose the H3 resolution, compare the original points with the occupied cells, and collapse the result card to inspect the anonymised polygons only. These are the latest hexbin captures and are separate from the halo-masking captures above.</p>
+        <div class="gallery" data-gallery="hexbin"></div>
+      </div>
+    </section>
+
+    <section id="encrypt">
+      <div class="section-kicker">Safeguard · 02</div>
+      <h2>Encrypt for selected recipients</h2>
+      <p>MapSafe encrypts the selected dataset once using standard OpenPGP hybrid encryption. A random AES-256 content key protects the payload, and a small public-key envelope is created for each selected recipient. This means one package can be addressed to the custodian, a BMA representative, a researcher, or another authorised community member without repeating the full-payload encryption.</p>
+      <div class="split-callout">
+        <div><h3>Identity</h3><p>The local RSA-3072 identity is persistent. Its private key stays on the device and is protected by a passphrase; the public key and fingerprint are the material that can be published.</p></div>
+        <div><h3>Recipient decision</h3><p>Select the intended recipients after checking their fingerprints through a trusted channel. The recipient count changes the envelopes, not the dataset’s underlying content encryption.</p></div>
+      </div>
+      <ol class="numbered"><li>Create or recognise the local encryption identity.</li><li>Refresh and independently confirm community fingerprints.</li><li>Select the original, masked, or binned dataset and intended recipients.</li><li>Unlock the signing key and save the resulting <code>.pgp</code> package.</li></ol>
+      <div class="gallery" data-gallery="encrypt"></div>
+    </section>
+
+    <section id="community-upload">
+      <div class="section-kicker">Safeguard · community exchange</div>
+      <h2>Upload only permitted artefacts</h2>
+      <p>After masking or encryption, the owner can choose an artefact for the authorised NextGIS community. Public keys, anonymised layers, and encrypted packages are separate resource types. An unencrypted original is not offered as a community upload. NextGIS Web resource ACLs control who can discover or download the item, while OpenPGP recipient selection controls who can decrypt a protected package.</p>
+      <div class="notice"><strong>Keep the controls distinct:</strong> community membership does not automatically grant the ability to read every resource, and a user who can download an encrypted package still needs a matching local private key.</div>
+      <div class="gallery" data-gallery="community"></div>
+      <div class="subsection" id="nextgis-web">
+        <h3>NextGIS Web administration</h3>
+        <p>The browser-based NextGIS Web interface prepares the community resource groups used by MapSafe Mobile. Public keys and encrypted packages are kept in separate groups, while Web GIS permissions control which accounts can discover each resource.</p>
+        <div class="gallery" data-gallery="web-manuscript"></div>
+      </div>
+    </section>
+
+    <section id="notarise">
+      <div class="section-kicker">Safeguard · 03</div>
+      <h2>Optionally notarise the package</h2>
+      <p>Notarisation is an optional integrity aid. MapSafe calculates the encrypted package’s SHA-256 digest, binds it to the safe package filename, and asks an external wallet to approve the transaction on the selected EVM network. The wallet private key is never collected by MapSafe.</p>
+      <p>The resulting record supports later comparison of filename and digest. It does not prove that an observation is true, that a person was authorised to publish it, or that a recipient should trust the underlying claim.</p>
+      <div class="gallery" data-gallery="notarise"></div>
+    </section>
+
+    <section id="safeguard-gallery">
+      <div class="section-kicker">Reference</div>
+      <h2>Safeguard screenshot archive</h2>
+      <p>These captures show the mobile workflow from account preparation through anonymisation, encryption, community upload and optional notarisation.</p>
+      <div class="gallery archive" data-gallery="getting-started"></div>
+      <h3 class="archive-heading">Halo masking</h3>
+      <div class="gallery archive" data-gallery="anonymise"></div>
+      <h3 class="archive-heading">Hexagonal binning</h3>
+      <div class="gallery archive" data-gallery="hexbin"></div>
+      <h3 class="archive-heading">Encryption and notarisation</h3>
+      <div class="gallery archive" data-gallery="encrypt"></div>
+      <div class="gallery archive" data-gallery="notarise"></div>
+    </section>
+    <footer><span>MapSafe Mobile</span><span><a href="index.html">Home</a> · <a href="access.html">Access workflow</a></span></footer>
+  </main>
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded screenshot" hidden><button class="lightbox-close" aria-label="Close">×</button><img alt=""></div>
+  <script src="js/main.js?v=6"></script>
+</body>
+</html>

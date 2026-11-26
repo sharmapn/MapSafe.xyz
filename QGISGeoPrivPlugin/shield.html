@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+	       
+
+	       
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+        <!-- Shield Passphrase -->
+		<h2 class="title w-100">Shield Passphrase</h2> 
+
+			The Shield Passphrase tab allows data owners and recipients to generate a public-private key pair to protect the passphrase. 
+		
+		<p class="w-100">
+			This tab permits these tasks:
+		</p>
+			<ul>
+				<li><a href="#generatepass">Generate Passphrase</a></li>
+				<li><a href="#encryptpass">Encrypt Passphrase</a></li>
+				<li><a href="#decryptpass">Decrypt Passphrase</a></li>
+			</ul>
+		
+		<!--Seccion Getting Started-->
+		<a class="anchor" id="generatepass"></a>
+		<h4 class="subtitle w-100" id="generatepass">Generate Ky Pair</h4>
+		<p>
+			The Shield Passphrase tab allows data owners and recipients to generate a public-private key pair (see Generate Keys button). 
+		</p>
+
+			<div class="image text-left w-100">
+			<img class="img-responsive thumbnail" src="images/shield_passphrase.png">
+		</div>
+
+		<br>
+
+		<a class="anchor" id="encryptpass"></a>
+		<h4 class="subtitle w-100" id="encryptpass">Encrypt Passphrase</h4>
+		<p>
+			After the key pair is created, the recipients can supply the data owners with their public key, which can be used to encrypt the passphrase (see Encrypt Passphrase option). 
+			The resulting encrypted passphrase with the encrypted volume (or its link on the cloud) can be sent to the recipient. 
+		</p>
+		<a class="anchor" id="decryptpass"></a>
+		<h4 class="subtitle w-100" id="decryptpass">Decrypt Passphrase</h4>
+		<p>
+			One data recipients receive the encrypted dataset and the encrypted passphrase, they can use their private key to decrypt the encrypted passphrase, 
+			that can then be used to decrypt the dataset (see Decrypt Passphrase option). The private key is restricted
+			within QGIS during decryption. Depending on security requirements, recipients can choose to send a new public key for encrypting the passphrase for each encrypted
+			dataset or use the same one for all datasets to be sent to them. 
+		</p>
+	  
+		<br><br><br>
+		<div class="footer">
+			<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+		</div>
+
+	  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+  </body>
+</html>

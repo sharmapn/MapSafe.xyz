@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+	<style>
+		* {
+		box-sizing: border-box;
+		}
+
+		.row {
+		display: flex;
+		}
+
+		/* Create two equal columns that sits next to each other */
+		.column {
+		flex: 50%;
+		padding: 5px;
+		height: 300px; /* Should be removed. Only for demonstration */
+		}
+	</style>
+
+
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+			<!--
+	        <div class="mb-5">
+			<h3 class="h6">Subscribe for newsletter</h3>
+			  <form action="#" class="colorlib-subscribe-form">
+	            <div class="form-group d-flex">
+	            	<div class="icon"><span class="icon-paper-plane"></span></div>
+	              <input type="text" class="form-control" placeholder="Enter Email Address">
+	            </div>
+	          </form>
+			</div>
+			-->
+
+	        
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+			<div class="container-fluid" style="height: 200px; vertical-align: left" id="home">
+				<div class="row" style="height: 100%">
+					<div class="col" style="text-align: left">
+						<span class="img-wrapper"></span>
+						<img src="images/mapsafe_logo_name.png" style="height: 200px; width: 800px" "vertical-align: left;">
+					</div>
+					<div class="col" style="float:left; position: relative; top: 10%">
+						<div class="text-wrapper">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<hr>
+
+		 
+
+		<style>
+			p {
+				width:100%;				
+				text-align:left;
+			}
+
+		</style>
+
+			<div class="row">
+				<div class="column" >
+						<p>
+							MapSafe QGIS plugin offers location privacy mechanisms for users to protect 
+							their datasets before publishing or putting them on maps.
+
+							The plugin leverages all these security functions 
+							in a workflow to offer a complete geoprivacy approach from their familiar desktop application. 
+
+						</p>
+						<p>
+							
+							Users can first use donut masking or hexagonal binning to obfuscate coordinates, provisioning access to data at lower levels of accuracy. 
+							The resulting datasets, having different levels of detail are then protected using symmetric key encryption, while the passphrase 
+							itself is protected using public key encryption. permitting only intended parties to decrypt it. Finally, to complete the security process, 
+							the final encrypted volume's filename and hash value are notarised on the blockchain as a public record. 
+							<br> <br>
+
+							Data recipients can use the notarised record to verify the encrypted volume's originality and the original dataset therein, 
+							before decrypting and accessing it. 
+							The plugin aims to solve geoprivacy challenges, not currently addressed in other desktop GIS software, by combining security functions 
+							into a single workflow and graphical environment in QGIS. 
+
+						</p>
+						<p>
+							Our QGIS-based geoprivacy plugin replicates and advances our recent browser-based geoprivacy tool of the same name <a href="https://www.mapsafe.xyz" target="_blank">https://www.mapsafe.xyz</a> . 
+							The ``MapSafe: A complete tool for achieving geospatial data sovereignty''  
+							<a href="https://onlinelibrary.wiley.com/doi/10.1111/tgis.13094" target="_blank">paper</a> describes how the tool
+							offers a complete approach for sovereign data owners to safeguard sensitive geospatial data by anonymising, encrypting, and notarising it.
+							This QGIS plugin replicates the funcationality within QGIS for a reliable geoprivacy tool for desktop applications.
+						</p>
+						
+						<h6 class="text-left w-100">
+							Rate the plugin on its Github <a href="https://github.com/sharmapn/MapSafe-QGIS-plugin" target="_blank">repo</a>   if you like!
+						</h6>
+
+						<div class="footer">
+							<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+						</div>
+
+
+				</div>
+				<div class="column" >
+					<iframe width="600" height="350"
+						src="https://www.youtube.com/embed/gq4wX3kMTfE?autoplay=0">
+						<p>This video shows how to safeguard and verify your dataset, from start to finish!</p> 
+					</iframe>
+				</div>
+			</div>		
+        
+	  </div>
+
+
+	  
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+
+  </body>
+</html>

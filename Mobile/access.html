@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MapSafe Mobile Access workflow: discover community packages, verify integrity, decrypt and display authorised datasets.">
+  <title>Access workflow | MapSafe Mobile</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+  <button class="menu-toggle" aria-label="Open guide menu" aria-expanded="false">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><img class="brand-logo" src="mapsafe_logo.png" alt=""><span>MapSafe<br><small>Mobile guide</small></span></div>
+    <nav aria-label="Guide navigation">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="index.html#getting-started">Getting started</a>
+      <div class="nav-group-label">Safeguard</div>
+      <a class="nav-link" href="safeguard.html">Safeguard workflow</a>
+      <div class="nav-group-label">Access</div>
+      <a class="nav-link active" href="access.html">Access workflow</a>
+      <a class="nav-link" href="access.html#access-gallery">Screenshot archive</a>
+    </nav>
+    <div class="sidebar-foot">NextGIS Mobile extension<br>Open-source research guide</div>
+  </aside>
+
+  <main class="main">
+    <section class="page-hero">
+      <div class="section-kicker">Access workflow</div>
+      <h1>Verify before you open</h1>
+      <p class="lead">Community access is a controlled path from discovery to evidence, private-key recovery and map display.</p>
+      <p>The recipient begins with a package that their community permissions allow them to discover. MapSafe checks its local digest against the NextGIS registry and, when supplied, the filename-bound blockchain record before the package reaches the decryption step.</p>
+      <div class="hero-actions"><a class="button primary" href="#community-packages">Browse community packages</a><a class="button secondary" href="safeguard.html">Go to Safeguard</a></div>
+    </section>
+
+    <section id="community-packages">
+      <div class="section-kicker">Access · 01</div>
+      <h2>Find an authorised package</h2>
+      <p>Community membership and resource access are separate decisions. NextGIS Web contains distinct resource groups for public keys, anonymised datasets and encrypted packages. ACLs determine what an account can discover and download; OpenPGP recipient selection determines who can decrypt a protected package.</p>
+      <div class="feature-grid">
+        <div class="feature-card"><h3>BMA representative</h3><p>In the tested North Whangārei release, the BMA representative can access the protected original because the package was addressed to the BMA key and the resource ACL permits discovery.</p></div>
+        <div class="feature-card"><h3>Amber — Researcher</h3><p>Amber is limited to the authorised anonymised release for her research purpose. Seeing a community resource does not imply access to the original dataset.</p></div>
+      </div>
+      <div class="gallery" data-gallery="community"></div>
+    </section>
+
+    <section id="verify">
+      <div class="section-kicker">Access · 02</div>
+      <h2>Compare integrity evidence</h2>
+      <p>When a package is selected, MapSafe downloads it, recalculates SHA-256, and compares the result with the digest stored in the NextGIS registry. If a filename-bound blockchain record is supplied, MapSafe also checks the filename and digest pair. A mismatch stops the workflow instead of passing a questionable package to decryption.</p>
+      <p>This comparison provides evidence about package integrity during transfer. It does not prove the truth of the underlying observation or replace community governance and resource ACLs.</p>
+      <div class="gallery" data-gallery="verify"></div>
+    </section>
+
+    <section id="decrypt">
+      <div class="section-kicker">Access · 03</div>
+      <h2>Unlock only what the local key permits</h2>
+      <p>The recipient’s local private key must match one of the OpenPGP recipient envelopes. The passphrase unlocks the protected key only in memory. MapSafe then checks the package’s integrity and the sender’s signature before importing the recovered layer.</p>
+      <p>After successful decryption, MapSafe clears previously displayed layers, imports the recovered GeoJSON, selects it, and zooms the map to its extent. In this way, the user sees the dataset just recovered rather than a mixture of old and new layers.</p>
+      <div class="notice"><strong>Role-specific release:</strong> the BMA representative recovers the original in the tested release; Amber receives the anonymised layer authorised for her research purpose.</div>
+      <div class="gallery" data-gallery="decrypt"></div>
+    </section>
+
+    <section id="security">
+      <div class="section-kicker">Access · security</div>
+      <h2>Keep recovery local</h2>
+      <p>Private keys never enter NextGIS Web or the blockchain. Before device replacement, export a protected secret-key backup and keep its passphrase separate from the backup file. Fingerprints should be confirmed through an independent trusted channel, and changed, missing, revoked or removed-member keys should be treated as a reason to stop and review the recipient list.</p>
+    </section>
+
+    <section id="access-gallery">
+      <div class="section-kicker">Reference</div>
+      <h2>Access screenshot archive</h2>
+      <p>These captures follow the recipient journey from community discovery through verification, private-key unlocking, decryption and display.</p>
+      <div class="gallery archive" data-gallery="decrypt"></div>
+    </section>
+    <footer><span>MapSafe Mobile</span><span><a href="index.html">Home</a> · <a href="safeguard.html">Safeguard workflow</a></span></footer>
+  </main>
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded screenshot" hidden><button class="lightbox-close" aria-label="Close">×</button><img alt=""></div>
+  <script src="js/main.js?v=6"></script>
+</body>
+</html>

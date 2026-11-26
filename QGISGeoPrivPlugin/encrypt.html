@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+	        
+
+	        
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+        <!-- Encryption -->
+		<h3 class="title w-100">What is encryption?</h2> 
+
+		<p> Encryption is meant to solve the problem of data ownership by storing the data in an encrypted format with the user
+		being in control of keys required to decrypt the data. Moreover, the user controls which individual has access to
+		which level of detail of the original dataset. In this scheme, different user trust levels is accommodated by sharing
+		varied lengths of the main passphrase with different individuals for decryption, who then subsequently have access
+		to different levels of masked data.
+
+		<p>The original and obfuscated datasets are protected through an encryption scheme that allows access only from chosen users. 
+		The datasets are encrypted with using the SubtleCrypto module, which encrypts
+		data within the plugin internally. As such no sensitive data is leaves the browser or user's computer. Encryption
+		is carried out using the AES-GCM algorithm with 256-bit keys. 
+				
+		The MapSafe plugin encyption module includes different options to users:
+		<ul>
+			<li>Generate Passphrase</a></li>
+			<li>Cater for users with varied access levels</a></li>
+			<li>Passphrase protection using Public key encryption</a></li>
+		</ul>
+
+		<a class="anchor" id="generatepassphrase"></a>
+		<h4 class="subtitle w-100" id="generatepass">Generate Passphrase</h4>
+		<p>
+			Encryption uses a passphrase to transform the original data into a form unrecoverable by an adversary.
+			Users can generate this random passphrase of 15 terms through the Generate Passphrase button.
+			Pressing this button generates a different random passphrase each time.
+			
+		</p>
+
+		<a class="anchor" id="encryptlevels"></a>
+		<h4 class="subtitle w-100" id="generatepass">Choose to include any levels in the encrypted volume — one, two, or three</h4>
+		<p>
+			Users can choose to encrypt either the QGIS layers
+			or any OS files (including GIS files). Once users save the masked or binned layers, they
+			can be included for encryption within the three levels. Any number of levels, up to
+			three, can be encrypted. Ideally, the original dataset will be encrypted at the first
+			(innermost) level, while the obfuscated layers will be at the second, and the more
+			obfuscated layer will be at the third level. In addition to the saved layers, any OS files
+			can be included within these levels. 
+
+			<p>The figure below shows the encryption module with the Mapsafe plugin. While the encryption is a one step process
+			for the user, in the background, the plugin performs multi-level encryption of the three levels of masked geospatial
+			datasets with the parameters within the plugin.
+		</p>
+
+		<div class="image text-left w-100">
+			<img class="img-responsive thumbnail" src="images/encryption.png">
+		</div>
+
+		<a class="anchor" id="encryptoptions"></a>
+
+		<br><br>
+
+		<h4 class="subtitle w-100" id="generatepass">Encrypt the QGIS layers or OS files</h4>
+		<p>
+			In MapSafe plugin’s encryption
+			scheme, the original geospatial dataset alone or together with its obfuscated repre-
+			sentations (medium coarse and coarse, see Table 1), are incorporated into a single
+			encrypted volume that contains multiple secret levels, each holding a different repre-
+			sentation of the original dataset, in a nested encryption scheme. The volume can be
+			shared with users who can decrypt them based on their privilege. Figure 5 shows the
+			encryption feature, where data owners can choose to encrypt only the original dataset,
+			or together with its obfuscated representations. The nested approach makes it easier 
+			for sharing and coordination.
+		</p>
+
+		
+
+		<a class="anchor" id="encryptpassoption"></a>
+		<h4 class="subtitle w-100" id="generatepass">Encrypt the passphrase (symmetric key) itself using public key approach</h4>
+		<p>
+			The passphrase used for dataset encryption, in turn, can be encrypted using the recipient’s public key for secure sharing. Rather
+			than re-encrypting datasets with a new key everytime a new user requests access to the
+			(encrypted) dataset, this approach allows to just encrypt the passphrase. Moreover, a
+			separate encrypted dataset does not need to be shared, especially through the cloud.
+			This approach also protects the secret passphrase during exchange between the data.
+			<br> 
+			Refer to the following section for details.
+		</p>
+
+
+		<h3 id="encryption">Encryption Levels</h3>
+		<p>Encryption uses a passphrase to transform the original data into a form unrecoverable by an adversary. 
+         Mapsafe uses the encryption facility provided by the Web.Cryto toolkit whiich is in-built within the browser.
+         A 15 term passphrase is randomly generated and used to encrypt the masked dataset data which is later required to recover the original data.  
+		 The masked dataset is encrypted in the browser memory at three levels. </p>
+          
+          <style>
+            ul.a {              list-style-type: circle;            }
+            ul.b {              list-style-type: square;            }
+            ol.c {              list-style-type: upper-roman;            }
+            ol.d {              list-style-type: lower-alpha;            }
+            .customIndent {              margin-left: -15px;            }
+            ul {              padding-left: 30px;            }
+          </style>
+
+          <ul class="a">
+            <li>The full 15 term passphrase is used to encrypt the original dataset,</li>
+            <li>10 terms of the full passphrase to encrypt the masked dataset, and </li>
+            <li>5 terms of the full passphrase to encrypt the `more' masked dataset.</li>
+          </ul>
+					
+          <p>These passphrases are required to later decrypt to each of the three levels.</p>
+
+          <p>A detailed description of the encryption and decryption proceses are provided in the following image. 
+		  <br> <br> <br>
+          
+		  <img src="images/EncDecFlow.png" alt="Encryption Decryption Flow" style="width:1040px;height:455px;">
+          <br><br>
+          <!-- <a href="images/EncDecFlow.pdf" target="_blank"> 
+          <font color="blue">document</font> </a> -->
+          </p>
+          <br>
+          
+          The obfuscation (masking and hexagonal binning) and encryption are carrried out at multipe levels: <br> <br>
+          <img src="images/encdeclevels.png" alt="Encryption decryption levels" style="width:900px;height:180px;">
+          <br><br><br>
+
+		  <br><br><br>
+			<div class="footer">
+	        	<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	        </div>
+	  
+	  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en"> 
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+	<script>
+		$(function() {
+			$("#myImg").hover(
+				function() {
+					$(this).attr("src", "images/combined.gif");
+				},
+				function() {
+					$(this).attr("src", "images/pluginsettings.png");
+				}                         
+			);                  
+		});
+	
+
+
+		window.addEventListener('load', function() {
+			const submenus = document.querySelectorAll('.homeSubmenu');
+			submenus.forEach(function(submenu) {
+				submenu.style.display = 'block'; // show submenus on page load
+			});
+		});
+
+	</script>
+
+	<style>
+		code {
+		font-family: Consolas,"courier new";
+		color: crimson;
+		background-color: #f1f1f1;
+		padding: 2px;
+		font-size: 105%;
+		}
+	</style>
+
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+	        
+
+	        
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+	
+<h3 class="title w-100"> Usability Test</h3> 
+
+<p>The security processes within the plugin can be complex, and therefore it would be a bonus to carry out a usability evaluation.  
+ We be grateful if you could test it as a user and give any feedback.  
+	
+<p>The usability test comprises of the following aspects: 
+<ul>
+	<li>Demonstration video describes the safeguarding and verification features</a></li>
+	<li>Usability Test aspects detailed </a></li>
+	<li>Installing Python and the required libraries</a></li>	
+</ul>
+     
+<h3>1. Demonstration Video</h3>
+
+<p>The first step would be to familiarise yourself with the plugins safeguarding and verification features via the following 5-minute demonstration video. Also included is the Passphrase shielding feature. 
+	
+<div class="column" >
+	<iframe width="600" height="350"
+		src="https://www.youtube.com/embed/gq4wX3kMTfE?autoplay=0">
+		<p>The video shows how to safeguard and verify your dataset, from start to finish!</p> 
+	</iframe>
+</div>
+
+<br>
+<h3> 2. Usability Test  </h3>
+
+<p>The usability evaluations focuses on measuring efficiency, effectiveness, and user satisfaction. 
+<ul>
+	<li> Effectiveness focuses on errors and task completion rates, categorized as “complete,” “complete with errors,” or “incomplete.”
+	<li> Efficiency focuses on comparing the time needed to complete the safeguarding and verifying workflows.
+	<li> Usability testing is based on Jakob Nielsen’s 10 usability heuristics — a set of high-level guidelines based on an <br> 
+		understanding of human behavior, psychology, and information processing. <br>
+		
+</ul>	
+	
+<br>
+
+<h4> Effectiveness Test</h4>
+
+<p> The effectiveness is measured by the number of errors and task completion rates. Please carry out these tasks and report if you encounter any challenges completing any of these tasks, as demonstrated in the video.
+
+<p>The plugin allows these safeguarding functions to be carried out in combination or independently. 
+The combined mode enforces an ordered execution of safeguarding functions, while the individual mode gives users the flexibility to perform any function first. <br><br>
+      
+<b>Combined mode</b> - should be already chosen by default
+<ul>
+	<li> Load the dataset - it should be in the dataset folder of the plugin zip file.</li>
+	<li> Carry our donut masking and save the layers.</a></li>
+	<li> Close the plugin, and select the original layer again. Otherwise it selects the masked layer and hexabins that instead of the original layer (working on resolving this).</a></li>
+	<li> Select the original layer.</a></li>
+	<li> Carry out hexabining, and save layers</a></li>
+	<li> Encrypt one, two, or three levels. If choosing three layers, the second and third layers would be from the saved masked or hexabinned layers.</a></li>
+	<li> Notarise, and open the transaction link in Sepolia Testnet Explorer using the link displayed in the plugin.</a></li>
+</ul>
+
+<b>Individual Mode</b>
+<ul>
+	<li>You can start from any security function and thereafter choose any function (moving to the right) as the next option. The original dataset can be first masked, encrypted, or notarised, without having to go in that order. </li>
+	<li>Thereafter, the next security function (masking or encryption) can be skipped as well. For instance, users can mask the dataset, but avoid encryption, and move on to notarise the masked dataset. </li>
+</ul>	
+
+<p> When undertaking these safeguarding an verification tasks, fill out the following form. This should not take more than an hour. <br><br><br>
+
+	 <embed src="./effectiveness_evaluation.pdf" type="application/pdf" width=500px height=500px />
+		<br><br><br>
+
+
+<h4> Effeciency Test</h4>
+
+<p>To measure efficiency, record the time needed to fully complete the two workflows: safeguarding and verifying in two repetitions.
+
+<h4> Usability Test</h4>	
+
+Usability testing is based on Jakob Nielsen’s 10 usability heuristics, and we focus on human behavior, psychology, and information processing. <br>
+		The Heuristic Evaluation workbook (in PDF) can be downloaded from  this form: <br><br><br>
+			
+	<embed src="https://media.nngroup.com/media/articles/attachments/Heuristic_Evaluation_Workbook_-_Nielsen_Norman_Group.pdf" type="application/pdf" width=500px height=500px />
+		<br><br>
+
+<p> 
+When using the MapSafe plugin, you’ll find its key feature is the simplicity of its interface and the thorough documentation provided. The interface is clean and intuitive, with explanatory tooltips available next to nearly every button for functions like donut masking, hexagonal binning, encryption, notarization, verification, and decryption. 
+These tooltips help guide you through each step.
+
+<p> As you work, you’ll see the original, masked, and hexabinned datasets displayed as QGIS layers. This allows you to visually compare the datasets before and after anonymization. 
+
+<p>For additional guidance, refer to the this plugin’s help website, which provides a basic guide covering all features. The guide explains how the plugin works, the trade-offs involved (e.g., deciding on masking distances), and its limitations.  
+The above detailed video walkthrough demonstrates the safeguarding and verification processes from start to finish. 
+
+<p>After downloading your anonymized dataset or encrypted volumes, the plugin will display reminders, such as not to reveal specific masking parameters to the public and to securely store the encryption passphrase. 
+Finally, once you complete the notarization process, the plugin will display the URL where the encrypted dataset’s details are stored, ensuring you can access this information easily.
+
+<br><br><br>
+	
+	
+ <h3>3. Installing Python and the required libraries</h3>
+	      
+   <p> The steps for installing Python and the required Python libraries are detailed <a href="gettingstarted.html" target="_blank">here </a> 
+   <p> The plugin environment variables (notariation details and the working directory) need to be set. These are also detailed <a href="gettingstarted.html" target="_blank">here </a> 
+   <p> The Individual or Combined Mode need to be understood. This is also explained <a href="gettingstarted.html" target="_blank">here </a>  
+   <p> The Help button directs the users to this website. 
+			
+			
+
+
+		<br><br><br>
+		<div class="footer">
+			<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+		</div>
+
+
+	  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+  </body>
+</html>

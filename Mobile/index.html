@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MapSafe Mobile guide: protect, share, verify and access sensitive field datasets in NextGIS Mobile.">
+  <title>MapSafe Mobile | User guide</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+  <button class="menu-toggle" aria-label="Open guide menu" aria-expanded="false">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><img class="brand-logo" src="mapsafe_logo.png" alt=""><span>MapSafe<br><small>Mobile guide</small></span></div>
+    <nav aria-label="Guide navigation">
+      <a class="nav-link active" href="index.html">Home</a>
+      <a class="nav-link" href="index.html#getting-started">Getting started</a>
+      <div class="nav-group-label">Safeguard</div>
+      <a class="nav-link" href="safeguard.html">Safeguard workflow</a>
+      <div class="nav-group-label">Access</div>
+      <a class="nav-link" href="access.html">Access workflow</a>
+      <a class="nav-link" href="index.html#download">Download</a>
+      <a class="nav-link" href="index.html#screenshots">Screenshot archive</a>
+    </nav>
+    <div class="sidebar-foot">NextGIS Mobile extension<br>Open-source research guide</div>
+  </aside>
+
+  <main class="main">
+    <section class="hero" id="home">
+      <div class="eyebrow">NextGIS Mobile</div>
+      <h1>MapSafe Mobile</h1>
+      <p class="lead">Protect sensitive field observations before they leave the device.</p>
+      <p>MapSafe Mobile brings spatial anonymisation, recipient-controlled OpenPGP encryption, community exchange, integrity verification and optional blockchain notarisation into the mobile GIS workflow.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="safeguard.html">Explore Safeguard</a>
+        <a class="button secondary" href="access.html">Explore Access</a>
+      </div>
+      <div class="hero-image mode-switch" data-mode-switch>
+        <button class="mode-image-button" type="button" data-mode-image-button aria-label="Show Access workflow image">
+          <img data-mode-image src="images/mobile/ms2026-north-whangarei-20260909-01-workflow-chooser.png" alt="MapSafe Mobile Safeguard workflow chooser">
+        </button>
+        <div class="mode-switch-caption"><span data-mode-label>Safeguard view</span><span class="mode-switch-hint">Click the image to view Access</span></div>
+      </div>
+    </section>
+
+    <section id="getting-started">
+      <div class="section-kicker">Before fieldwork</div>
+      <h2>Start with the community</h2>
+      <p>MapSafe Mobile uses the normal NextGIS account stored by NextGIS Mobile. A community administrator normally prepares the NextGIS Web site, team membership, authentication group and resource access-control lists in a browser. In the field, the user selects that account and community from <em>Security &amp; Sharing</em>.</p>
+      <div class="notice"><strong>Important:</strong> MapSafe does not create a second login system. Private OpenPGP keys and passphrases remain on the device; only public-key material is published to the community.</div>
+      <div class="steps">
+        <div class="step"><span>1</span><h3>Prepare the community</h3><p>Use NextGIS Web to invite members, create or select the authentication group, and assign resource permissions.</p></div>
+        <div class="step"><span>2</span><h3>Choose the account</h3><p>Open MapSafe, select the connected NextGIS account and choose the community prepared for the field session.</p></div>
+        <div class="step"><span>3</span><h3>Publish public material</h3><p>Create or import a local OpenPGP identity, publish its public key, and synchronise member keys before sharing.</p></div>
+      </div>
+      <div class="feature-grid home-cards">
+        <a class="feature-card feature-link" href="safeguard.html"><span class="card-kicker">Safeguard</span><h3>Anonymise, encrypt and notarise</h3><p>Prepare an appropriate representation, protect it for selected recipients, and optionally anchor its digest.</p><span class="card-arrow">Read the workflow →</span></a>
+        <a class="feature-card feature-link" href="access.html"><span class="card-kicker">Access</span><h3>Verify, decrypt and display</h3><p>Find a permitted community package, compare its integrity evidence, and recover only what the local key authorises.</p><span class="card-arrow">Read the workflow →</span></a>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="section-kicker">Optional direct install</div>
+      <h2>Download MapSafe Mobile</h2>
+      <p>For research and field testing, you can install the signed Android release directly instead of using Google Play. Download the APK, keep Google Play Protect enabled, and verify the checksum before installation.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="card-kicker">Release 3.2.1</span>
+          <h3>MapSafe Mobile APK</h3>
+          <p>Package ID: <code>com.nextgis.mobile.mapsafe</code><br>File: <code>MapSafeMobile-3.2.1.apk</code></p>
+          <a class="button primary" href="downloads/MapSafeMobile-3.2.1.apk" download>Download APK</a>
+        </div>
+        <div class="feature-card">
+          <span class="card-kicker">Verify before installing</span>
+          <h3>SHA-256 checksum</h3>
+          <p class="checksum"><code>1AE3D71C96AF05246AC49C5AD59A22327282C4128358FDA9F02E8C3E84D709A2</code></p>
+          <p class="muted">The website build is signed; never install a debug build or share signing keys.</p>
+        </div>
+      </div>
+      <div class="notice"><strong>Installation note:</strong> Android may ask you to allow the browser or Files app to install an app from that source. Only enable this for a release you trust, then leave Google Play Protect enabled.</div>
+    </section>
+
+    <section id="screenshots">
+      <div class="section-kicker">Reference</div>
+      <h2>Screenshot archive</h2>
+      <p>The complete archive is organised on the workflow pages. Use the links below to jump directly to each part of the guide.</p>
+      <div class="feature-grid">
+        <a class="feature-card feature-link" href="safeguard.html#safeguard-gallery"><h3>Safeguard screenshots</h3><p>Masking, binning, identity creation, encryption, upload and notarisation.</p><span class="card-arrow">Open Safeguard archive →</span></a>
+        <a class="feature-card feature-link" href="access.html#access-gallery"><h3>Access screenshots</h3><p>Community discovery, verification, private-key unlocking, decryption and map display.</p><span class="card-arrow">Open Access archive →</span></a>
+      </div>
+    </section>
+    <footer><span>MapSafe Mobile</span><span>NextGIS Mobile geoprivacy guide</span></footer>
+  </main>
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded screenshot" hidden><button class="lightbox-close" aria-label="Close">×</button><img alt=""></div>
+  <script src="js/main.js?v=6"></script>
+</body>
+</html>

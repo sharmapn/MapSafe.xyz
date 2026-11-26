@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+    <link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+	        
+
+	       
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+        <!-- Shield Passphrase -->
+		<h2 class="title w-100">Notarisation</h2> 
+
+			<p>In our approach, the encrypted volume is uniquely identified and represented by notarising its hash value as a
+    public record on the Ethereum Blockchain. First, the SHA256 cryptographic hash function is used to generate a hash
+    value of the encrypted file containing the original and/or obfuscated geospatial datasets. Since tampering of data even by a single bit
+    will be detected by this process, this process can be used to resolve arguments against any given contested encrypted
+    volume. <br><br>
+
+    <p>A blockchain address is a
+    unique account for a user to carry out transactions on the blockchain, e.g. send and receive the assets in Ethereum.
+    In our approach, each user requires a blockchain address using which they mint the hash value on the Blockchain.  
+    Users have to ensure that they have Ether in their account to pay for the transaction and can add Ether using their 
+    credit card via popular crypto-selling websites, e.g. coinbase.com. 
+
+     <p>The hash value is computed for the resulting encrypted volume. 
+        Thereafter, upon pressing the mint button, the filename and hash value of the encrypted file is submitted to the Ethereum blockchain to be
+        stored as a public record of the geospatial dataset stored within.
+		
+		<div class="image text-left w-100">
+			<img class="img-responsive thumbnail" src="images/notarise5.jpg">
+		</div>
+
+       <br>
+
+        	<p> Once the has value is minted, a url link to the Ethereum address where the data is stored as a public record is presented.</p>
+
+           <div class="image text-left w-100">
+            <img class="img-responsive thumbnail" src="images/sepolia.jpg" width="900">
+          </div>
+
+          <br>
+
+          <p>The notarization step mints the final encrypted volume's hash value on the blockchain -- completing our geoprivacy approach. 
+          The filename and hash value are submitted for minting on the Ethereum blockchain and thereafter, forever exists as a public. 
+          All intended recipients can use the Etherscan Sepolia Testnet Explorer to verify the encrypted volume's originality.  
+
+				  
+
+          
+
+          <br><br><br>
+			    <div class="footer">
+	        	<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	        </div>
+	  
+	  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById("my-ele").click();
+		    document.getElementById("my-ele2").click();  
+    </script>
+
+  </body>
+</html>

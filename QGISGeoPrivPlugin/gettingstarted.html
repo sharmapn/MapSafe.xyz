@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>MapSafe QGIS Plugin</title>
+	<link rel="icon" type="image/x-icon" href="images/icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+	<script>
+		$(function() {
+			$("#myImg").hover(
+				function() {
+					$(this).attr("src", "images/combined.gif");
+				},
+				function() {
+					$(this).attr("src", "images/pluginsettings.png");
+				}                         
+			);                  
+		});
+	
+
+
+		window.addEventListener('load', function() {
+			const submenus = document.querySelectorAll('.homeSubmenu');
+			submenus.forEach(function(submenu) {
+				submenu.style.display = 'block'; // show submenus on page load
+			});
+		});
+
+	</script>
+
+	<style>
+		code {
+		font-family: Consolas,"courier new";
+		color: crimson;
+		background-color: #f1f1f1;
+		padding: 2px;
+		font-size: 105%;
+		}
+	</style>
+
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4 pt-5">
+		  		<h1><a href="index.html" class="logo">MapSafe</a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          
+			  <li>
+	              <a href="index.html">Home</a>
+	          </li>
+
+			  <li>
+	              <a href="gettingstarted.html">Getting Started</a>
+	          </li>
+
+			  <li class="active">
+	            <a id="my-ele" href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Safeguard</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="anonymise.html">Anonymise</a>
+                </li>
+                <li>
+                    <a href="encrypt.html">Encrypt</a>
+                </li>
+                <li>
+                    <a href="notarise.html">Notarise</a>
+                </li>
+	            </ul>
+	          </li>
+	          
+	          <li>
+              <a id="my-ele2" href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Verification</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="verify.html">Verify</a>
+                </li>
+                <li>
+                    <a href="decrypt.html">Decrypt</a>
+                </li>                
+              </ul>
+	          </li>
+			  <li>
+	              <a href="shield.html">Shield Passphrase</a>
+	          </li>	          
+	          <li>
+              <a href="contact.html">Contact</a>
+	          </li>
+	        </ul>
+
+	        
+
+	        
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+
+		<!-- Shield Passphrase -->
+		<h2 class="title w-100">Getting Started</h2> 
+
+			Before the plugin can be used, the following needs to be done. 
+			<ul>
+				<li>Installing Python and the required libraries</a></li>
+				<li>MapSafe Plugin Settings</a></li>
+				<ul>
+					<li>Individual or Combined Mode</a></li>
+					<li>Seting up the Working Directory</a></li>
+					<li>Seting up for Notarisation</a></li>
+					<li>Help Menu</a></li>
+				</ul>
+			</ul>
+
+		<br>
+         <h3> Installing Python and the required libraries</h3>
+          
+		  <p> <b> Please choose Python version <a href="https://www.python.org/downloads/release/python-3124/">3.12.4</a> </b> <br>
+				
+		  <p> The required Python libraries can be installed via pip. 
+		  To use pip in a Windows environment, one needs to run the OSGeo4W.bat from the 'D:\QGIS' directory (not from 'D\OSGEO4W'). 
+				 <br>
+
+
+		  <p> These commands need to be issued using the D:\QGIS\OSGEO.bat <br> For example, <code> D:\QGIS>pip install cryptography</code> <br>
+				<code> pip install python-dotenv </code> <br>
+				<code> pip install cryptography </code> <br>
+				<code> pip install pycryptodome </code> <br> 
+			  	<code> pip install h3 </code> <br> 
+			  	<code> pip install tqdm </code> <br> 
+				<code> pip install xkcdpass </code> <br>
+				<code> pip install easygui or python -m pip install easygui</code> <br>
+				<code> (python -m) pip install pyqt-switch </code>  <be>
+				<code> pip install web3 </code> <br>
+          
+          
+		  <br>
+		  <h3>MapSafe Plugin Settings</h3>
+
+		 From the plugin's main window, the following could to be set. <br>
+		 The notarisation details  is not necessary if one does not need to perform notarisation. <br>
+		 However, one must set the working directory. 
+		 <br><br>
+
+		<div class="image text-left w-100">
+				<img id="myImg2" class="img-responsive thumbnail" src="images/gettingstarted.png">
+			</div>
+
+		<br><br>
+		  <h4>Sample Dataset</h4>
+	      	   <p>The sample 'Kamloops' dataset used throughout this help guide and the YouTube video is in the Github repo's 'datasets' folder.
+			  <a href="https://github.com/sharmapn/MapSafe-QGIS-plugin/blob/main/datasets/all_clusters_kamloops.zip">Kamloops dataset </a> 
+			   
+		  <br><br>
+		  <h4>1. Individual or Combined Mode</h4>
+          <p>The plugin can be used in two modes. The <b>combined mode</b> (default) enforces and guides the user in perfoming these three functions in order in a workflow.
+			The <b>individual mode</b> allows users to use the plugin's three security functions 
+		  (donut masking or hexagonal binning, encryption and notarisation) individually or in any combination. 
+			  
+		  <p> This selection can be made in the switch at the top left (see above image).
+
+		  The figure below outlines the different combinations in which the security functions in the individual mode can be used.
+		  These can be used collectively to fully safeguard their data, or independently, for example, users can choose to only mask their maps. 
+		  They can skip masking and only encrypt it and download the encrypted volume. After encryption, they have an option to further notarise it. 
+		 
+		 	<div class="image text-left w-100">
+				<img id="myImg" class="img-responsive thumbnail" src="images/PluginModes.jpg">
+			</div>
+
+		<br><br>
+		 <h4>2. Seting up the Working Directory</h4>
+          <p>It is essential for users to set the working directory, where the resulting masked, binned, and encrypted datasets are <b>Saved</b>.		 
+		  This directory is also used by the plugin to perform computations and hold temporary data.
+          
+          <p> Users need to set this directory in the env variables dialog the first time the plugin is loaded (see above image).
+
+			 
+
+		<br><br>
+		 <h3>3. Seting up for Notarisation</h3>
+          <p>Ideally, all information should be notarised on the Ethereum mainnet. However, one can use the public Ethereum testnet, Sepolia for testing.
+          These are the steps needed for minting in Sepolia testnet:
+          
+          <ul class="a">
+            <li>First, visit  <a href="https://vanity-eth.tk/" target="_blank">Vanity-ETH </a> to generate an Ethereum vanity address and a private key.</li>          
+            <li>Second, using your generated Ethereum address, request Ether from this <a href="https://www.sepoliafaucet.io/" target="_blank">Sepolia Faucet</a></li>  
+            <li>If using the testnet, you can check the Ether balance and all minted data on your address, at the 
+            <a href="https://sepolia.etherscan.io/" target="_blank">Sepolia Etherscan</a> </li>   
+			<li>Finally, set the private key and testnet information using the Set Variables button on the plugin's top right (see above image).</li>       
+          </ul>
+          <br>		
+
+
+		
+		  <h4>4. Help</h4>
+          <p>The Help button directs the users to this website. 
+
+		<br><br><br>
+		<div class="footer">
+			<p2><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made using <i class="icon-heart" aria-hidden="true"></i> <a href="https://colorlib.com" color="white" target="_blank">Colorlib.com</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+		</div>
+
+
+	  </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+	<script>
+        document.getElementById("my-ele").click();
+		document.getElementById("my-ele2").click();  
+    </script>
+
+  </body>
+</html>
